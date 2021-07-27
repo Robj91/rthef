@@ -1,0 +1,226 @@
+Dink:Dir is now rthef.
+Dink:loading tilescreens...
+Dink:Done with tilescreens...
+Dink:Initting sound
+Dink:initting sound
+Dink:Opening cd..
+Dink:Get id..
+Dink:Error reading cd 44.
+Dink:loading batch
+Dink:Loading .ini
+Dink:done loading batch
+Dink:Loading splash
+Dink:World data loaded.
+Dink:LOADING main
+Dink:Temp thingie is C
+Dink:Script main is entered at offset 49.
+Dink:Dink started. Time to <Your Dmod Name Goes Here>
+Dink:Killed script main. (num 1)
+Dink:giving script the boot
+Dink:LOADING START
+Dink:Temp thingie is C
+Dink:Script START is entered at offset 104.
+Dink:Loading sounds..
+Dink:getting QUACK.WAV..
+Dink:getting PIG1.WAV..
+Dink:getting PIG2.WAV..
+Dink:getting PIG3.WAV..
+Dink:getting PIG4.WAV..
+Dink:getting BURN.WAV..
+Dink:getting OPEN.WAV..
+Dink:getting SWING.WAV..
+Dink:getting PUNCH.WAV..
+Dink:getting SWORD2.WAV..
+Dink:getting SELECT.WAV..
+Dink:getting ENTER.WAV..
+Dink:Error, cannot load sound file ENTER.WAV, tried two dirs even!
+Dink:getting PICKER.WAV..
+Dink:getting GOLD.WAV..
+Dink:getting GRUNT1.WAV..
+Dink:getting GRUNT2.WAV..
+Dink:getting SEL1.WAV..
+Dink:getting ESCAPE.WAV..
+Dink:getting NONO.WAV..
+Dink:getting SEL2.WAV..
+Dink:getting SEL3.WAV..
+Dink:getting HIGH2.WAV..
+Dink:getting FIRE.WAV..
+Dink:getting SPELL1.WAV..
+Dink:getting CAVEENT.WAV..
+Dink:getting SNARL1.WAV..
+Dink:getting SNARL2.WAV..
+Dink:getting SNARL3.WAV..
+Dink:getting HURT1.WAV..
+Dink:getting HURT2.WAV..
+Dink:getting ATTACK1.WAV..
+Dink:getting CAVEENT.WAV..
+Dink:getting LEVEL.WAV..
+Dink:getting SAVE.WAV..
+Dink:getting SPLASH.WAV..
+Dink:getting SWORD1.WAV..
+Dink:getting BHIT.WAV..
+Dink:getting SQUISH.WAV..
+Dink:getting STAIRS.WAV..
+Dink:getting STEPS.WAV..
+Dink:getting ARROW.WAV..
+Dink:getting FLYBY.WAV..
+Dink:getting SECRET.WAV..
+Dink:getting BOW1.WAV..
+Dink:getting KNOCK.WAV..
+Dink:getting DRAG1.WAV..
+Dink:getting DRAG2.WAV..
+Dink:getting AXE.WAV..
+Dink:getting BIRD1.WAV..
+Dink:getting BEEPING.WAV..
+Dink:getting BOING.WAV..
+Dink:getting BOINGG.WAV..
+Dink:getting DEEPB.WAV..
+Dink:getting DEEPBB.WAV..
+Dink:getting LOGINDC.WAV..
+Dink:getting LOGOFF.WAV..
+Dink:getting MULTIBEEP.WAV..
+Dink:getting MULTIBEEPP.WAV..
+Dink:getting MULTIBEEPPP.WAV..
+Dink:getting SYSTEMF.WAV..
+Dink:getting WOOSH.WAV..
+Dink:getting CLICK.WAV..
+Dink:getting DING.WAV..
+Dink:getting ROCT.WAV..
+Dink:getting IMPASS.WAV..
+Dink:getting IMPASSc.WAV..
+Dink:getting WOOSH2.WAV..
+Dink:getting ELEV.WAV..
+Dink:getting ZAP.WAV..
+Dink:getting BUZZ.WAV..
+Dink:getting SURGE.WAV..
+Dink:getting SLECT.WAV..
+Dink:getting FALSE.WAV..
+Dink:getting FALSE2.WAV..
+Dink:getting METOPEN.WAV..
+Dink:getting WOOSH3.WAV..
+Dink:Dir is now rthef.
+Dink:loading tilescreens...
+Dink:Done with tilescreens...
+Dink:Initting sound
+Dink:initting sound
+Dink:Opening cd..
+Dink:Get id..
+Dink:Error reading cd 44.
+Dink:loading batch
+Dink:Loading .ini
+Dink:done loading batch
+Dink:Loading splash
+Dink:World data loaded.
+Dink:LOADING main
+Dink:Temp thingie is C
+Dink:Script main is entered at offset 49.
+Dink:Dink started. Time to <Your Dmod Name Goes Here>
+Dink:Killed script main. (num 1)
+Dink:giving script the boot
+Dink:LOADING START
+Dink:Temp thingie is C
+Dink:Script START is entered at offset 104.
+Dink:Loading sounds..
+Dink:getting QUACK.WAV..
+Dink:getting PIG1.WAV..
+Dink:getting PIG2.WAV..
+Dink:getting PIG3.WAV..
+Dink:getting PIG4.WAV..
+Dink:getting BURN.WAV..
+Dink:getting OPEN.WAV..
+Dink:getting SWING.WAV..
+Dink:getting PUNCH.WAV..
+Dink:getting SWORD2.WAV..
+Dink:getting SELECT.WAV..
+Dink:getting ENTER.WAV..
+Dink:Error, cannot load sound file ENTER.WAV, tried two dirs even!
+Dink:getting PICKER.WAV..
+Dink:getting GOLD.WAV..
+Dink:getting GRUNT1.WAV..
+Dink:getting GRUNT2.WAV..
+Dink:getting SEL1.WAV..
+Dink:getting ESCAPE.WAV..
+Dink:getting NONO.WAV..
+Dink:getting SEL2.WAV..
+Dink:getting SEL3.WAV..
+Dink:getting HIGH2.WAV..
+Dink:getting FIRE.WAV..
+Dink:getting SPELL1.WAV..
+Dink:getting CAVEENT.WAV..
+Dink:getting SNARL1.WAV..
+Dink:getting SNARL2.WAV..
+Dink:getting SNARL3.WAV..
+Dink:getting HURT1.WAV..
+Dink:getting HURT2.WAV..
+Dink:getting ATTACK1.WAV..
+Dink:getting CAVEENT.WAV..
+Dink:getting LEVEL.WAV..
+Dink:getting SAVE.WAV..
+Dink:getting SPLASH.WAV..
+Dink:getting SWORD1.WAV..
+Dink:getting BHIT.WAV..
+Dink:getting SQUISH.WAV..
+Dink:getting STAIRS.WAV..
+Dink:getting STEPS.WAV..
+Dink:getting ARROW.WAV..
+Dink:getting FLYBY.WAV..
+Dink:getting SECRET.WAV..
+Dink:getting BOW1.WAV..
+Dink:getting KNOCK.WAV..
+Dink:getting DRAG1.WAV..
+Dink:getting DRAG2.WAV..
+Dink:getting AXE.WAV..
+Dink:getting BIRD1.WAV..
+Dink:getting BEEPING.WAV..
+Dink:getting BOING.WAV..
+Dink:getting BOINGG.WAV..
+Dink:getting DEEPB.WAV..
+Dink:getting DEEPBB.WAV..
+Dink:getting LOGINDC.WAV..
+Dink:getting LOGOFF.WAV..
+Dink:getting MULTIBEEP.WAV..
+Dink:getting MULTIBEEPP.WAV..
+Dink:getting MULTIBEEPPP.WAV..
+Dink:getting SYSTEMF.WAV..
+Dink:getting WOOSH.WAV..
+Dink:getting CLICK.WAV..
+Dink:getting DING.WAV..
+Dink:getting ROCT.WAV..
+Dink:getting IMPASS.WAV..
+Dink:getting IMPASSc.WAV..
+Dink:getting WOOSH2.WAV..
+Dink:getting ELEV.WAV..
+Dink:getting ZAP.WAV..
+Dink:getting BUZZ.WAV..
+Dink:getting SURGE.WAV..
+Dink:getting SLECT.WAV..
+Dink:getting FALSE.WAV..
+Dink:getting FALSE2.WAV..
+Dink:getting METOPEN.WAV..
+Dink:LOADING start-1
+Dink:Temp thingie is C
+Dink:Script start-1 is entered at offset 40.
+Dink:giving script the boot
+Dink:LOADING start-2
+Dink:Temp thingie is C
+Dink:Script start-2 is entered at offset 43.
+Dink:giving script the boot
+Dink:LOADING start-4
+Dink:Temp thingie is C
+Dink:Script start-4 is entered at offset 39.
+Dink:giving script the boot
+Dink:Stopped cd
+Dink:Killed script START. (num 1)
+Dink:giving script the boot
+Dink:Script start-4 is entered at offset 86.
+Dink:giving script the boot
+Dink:running through mouse list..
+Dink:running 4's script..
+Dink:Script start-4 is entered at offset 280.
+Dink:Was told to kill game, so doing it like a good boy.
+Dink:Shutting down CD stuff.
+Dink:Killed script start-1. (num 2)
+Dink:Killed script start-2. (num 3)
+Dink:Killed script start-4. (num 4)
+Dink:Sending quit message.
+Dink:giving script the boot
