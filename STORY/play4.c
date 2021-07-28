@@ -11,7 +11,6 @@ void main(void)
   sp_pframe(&elev, 1);
   sp_speed(&elev, 10);
   sp_timing(&elev, 0);
-  sp_sound(&elev, 68);
   
   move(&elev, 2, 500, 1);
   
@@ -55,14 +54,28 @@ void main(void)
   move_stop(&amark, 4, 455, 1);
   sp_speed(&emark, 11);
   sp_timing(&emark, 0);
+  
+  //speech bubbles
+  &save_x = create_sprite(388, 106, 0, 150, 27);
+  sp_pseq(&save_x, 150);
+  sp_pframe(&save_x, 27);
+  sp_que(&save_x, -500);
+  Playsound(61,22050,0,0,0);
+  
+  wait(200);  
+
+  &save_x = create_sprite(500, 206, 0, 150, 28);
+  sp_pseq(&save_x, 150);
+  sp_pframe(&save_x, 28);
+  sp_que(&save_x, -500);
+  Playsound(61,22050,0,0,0);  
+ 
+  wait(600);
  
   //change screens
-  wait(1500);
   script_attach(1000);
-  fade_down();
   &player_map = 99;
   load_screen(99);
-  draw_screen();
-  fade_up();
+  draw_screen();  
   kill_this_task();  
 }

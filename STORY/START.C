@@ -80,6 +80,7 @@ void main(void)
  load_sound("FALSE2.WAV", 74);
  load_sound("METOPEN.WAV", 75);
  load_sound("WOOSH3.WAV", 76);
+ load_sound("SYSFAIL.WAV", 77);
 
 //Playsound(50,36050,0,0,0);
 

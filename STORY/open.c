@@ -8,6 +8,13 @@ void main(void)
  //freeze dink and create variables
   freeze(1);
 
+  choice_start();
+  "skip first half of intro"
+  "don't skip any"
+  choice_end();
+  
+  if (&result == 1)
+  {
   ////////////////////////
   //temporary intro skip//
   ////////////////////////
@@ -30,6 +37,7 @@ void main(void)
    kill_this_task();
   ////////////////////////
   ////////////////////////
+  }
 
   int &sttext;
   int &sttext2;
@@ -44,49 +52,49 @@ void main(void)
  //scrolling text
   &sttext = say_xy("`%It is well known these days, that new adventures are a rare occurance", 0, 500);
   sp_kill(&sttext, 0);
-  sp_speed(&sttext, 1);
+  sp_speed(&sttext, 2);
   move(&sttext, 8, -20, 1);
-  wait(2000);
+  wait(1500);
 
  //scrolling text
   &sttext3 = say_xy("`%Motivation is lost so easily, but treasured when found..", 30, 480);
   sp_kill(&sttext3, 0);
-  sp_speed(&sttext3, 1);
+  sp_speed(&sttext3, 2);
   move(&sttext3, 8, -20, 1);
-  wait(3000);
+  wait(1500);
 
  //scrolling text
   &sttext4 = say_xy("`%Sometimes bad luck strikes, and an adventure is no more...", 0, 500);
   sp_kill(&sttext4, 0);
-  sp_speed(&sttext4, 1);
+  sp_speed(&sttext4, 2);
   move(&sttext4, 8, -20, 1);
-  wait(3000);
+  wait(1500);
 
  //scrolling text
   &sttext5 = say_xy("`%But sometimes, once in a life time, something very unlcuky happens..", 0, 500);
   sp_kill(&sttext5, 0);
-  sp_speed(&sttext5, 1);
+  sp_speed(&sttext5, 2);
   move(&sttext5, 8, -20, 1);
-  wait(4000);
+  wait(2000);
 
  //scrolling text
   &sttext6 = say_xy("`%Something odd..", 0, 500);
   sp_kill(&sttext6, 0);
-  sp_speed(&sttext6, 1);
+  sp_speed(&sttext6, 2);
   move(&sttext6, 8, -20, 1);
-  wait(4000);
+  wait(2000);
 
  //scrolling text
   &sttext7 = say_xy("`%Something strange...", 0, 500);
   sp_kill(&sttext7, 0);
-  sp_speed(&sttext7, 1);
+  sp_speed(&sttext7, 2);
   move(&sttext7, 8, -20, 1);
-  wait(4000);
+  wait(2000);
 
  //scrolling text
   &sttext8 = say_xy("`%And something even Dink could not possibly expect to happen...", 0, 500);
   sp_kill(&sttext8, 0);
-  sp_speed(&sttext8, 1);
+  sp_speed(&sttext8, 2);
   move_stop(&sttext8, 8, -60, 1);
 
  //Kill text sprites
