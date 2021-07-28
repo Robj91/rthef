@@ -1,9 +1,29 @@
 //script for screen 163
 
+  //text position for small text box
+  //is text box X-301
+  //            Y-29
+
 void main(void)
 {
  //make the current sprite invisible
  sp_nodraw(&current_sprite, 1); 
+ 
+ //hide all text boxes
+ &save_x = 0;
+hide_tbox:
+ &save_x = get_next_sprite_with_this_brain(0, 0, &save_x);
+ if (&save_x > 0)
+ {
+  &save_y = sp_pseq(&save_x, -1);
+  if (&save_y == 35)
+  {
+   sp_nodraw(&save_x, 1);
+  }
+  
+  &save_x += 1;
+  goto hide_tbox;
+ }
  
  int &numfive;
  
@@ -114,7 +134,7 @@ void main(void)
   move_stop(&elev, 4, 80, 1);
 
   //speech bubble
-  int &spch = create_sprite(230, 315, 0, 150, 24);
+  int &spch = create_sprite(185, 305, 0, 150, 24);
   sp_pseq(&spch, 150);
   sp_pframe(&spch, 24);
   sp_que(&spch, -500);
@@ -125,6 +145,8 @@ void main(void)
   
   //speech bubble
   sp_pframe(&spch, 25);
+  sp_x(&spch, 195);
+  sp_y(&spch, 330);
   Playsound(61,22050,0,0,0);
 
   sp_frame_delay(&elev, 350);    
@@ -151,6 +173,29 @@ void main(void)
   sp_pframe(&elev, 1);  
   wait(300);
   sp_active(&spch, 0);
+
+  //un-hide all text boxes
+  playsound(71, 22050, 0, 0, 0);
+  &save_x = 0;
+ unhide_tbox:
+  &save_x = get_next_sprite_with_this_brain(0, 0, &save_x);
+  if (&save_x > 0)
+  {
+   &save_y = sp_pseq(&save_x, -1);
+   if (&save_y == 35)
+   {
+    sp_nodraw(&save_x, 0);
+   }
+   
+   &save_x += 1;
+   goto unhide_tbox;
+  }
+
   sp_nodraw(1, 0);
+  &save_x = create_sprite(308, 410, 0, 98, 3);
+  sp_noclip(&save_x, 1);
+  sp_que(&save_x, 1000);
+  sp_pseq(&save_x, 98);
+  sp_pframe(&save_x, 3);
   set_mode(1);
  }
