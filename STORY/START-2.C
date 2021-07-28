@@ -52,6 +52,7 @@ if (game_exist(&result) == 0)
     sp_brain(1, 1);
     sp_que(1, 0);
     sp_noclip(1, 0);
+    set_keep_mouse(1);
     set_mode(2);
    //script now can't die when the load is preformed..
 

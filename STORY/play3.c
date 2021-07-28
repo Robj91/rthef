@@ -351,6 +351,13 @@ bloop:
 
  //change screens
   wait(1500);
+  script_attach(1000);
+  fade_down();
+  &player_map = 67;
+  load_screen(67);
+  draw_screen();
+  fade_up();
+  kill_this_task();  
  }
 }  
   

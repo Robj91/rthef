@@ -7,6 +7,30 @@ void main(void)
  {
  //freeze dink and create variables
   freeze(1);
+
+  ////////////////////////
+  //temporary intro skip//
+  ////////////////////////
+   sp_nodraw(1, 1);
+   sp_seq(1, 0);
+   sp_brain(1, 13);
+   sp_pseq(1,10);
+   sp_pframe(1,8);
+   sp_que(1,20000);
+   sp_noclip(1, 1);
+   sp_base_idle(1, -1);
+   sp_base_walk(1, -1);
+   
+   script_attach(1000);
+   &player_map = 67;
+   load_screen(67);
+   draw_screen();
+   //sp_nodraw(1, 0);
+
+   kill_this_task();
+  ////////////////////////
+  ////////////////////////
+
   int &sttext;
   int &sttext2;
   int &sttext3;
