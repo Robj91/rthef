@@ -18,7 +18,7 @@ void buttonoff( void )
 }
 
 void click(void)
-}
+{
     Playsound(17,22050,0,0,0);
     kill_game();
 }
