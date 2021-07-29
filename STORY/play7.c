@@ -197,5 +197,7 @@ hide_tbox:
   sp_que(&save_x, 1000);
   sp_pseq(&save_x, 98);
   sp_pframe(&save_x, 4);
+  
+  &save_x = create_sprite(
   set_mode(1);
  }
