@@ -196,6 +196,6 @@ hide_tbox:
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
   sp_pseq(&save_x, 98);
-  sp_pframe(&save_x, 3);
+  sp_pframe(&save_x, 4);
   set_mode(1);
  }
