@@ -1,33 +1,26 @@
 //script for screen 163
 
-  //text position for small text box
-  //is text box X-301
-  //            Y-29
+//i'm not retrieving editor numbers from sprites - just picking which ones to store stuff
+//Sprite doesn't matter, we won't have anything on puzzle screens that rely on editor information
+
+//editor sprite number variables for this screen:
+//#1 - <=0 = intro has not finished playing
+//       1 = intro has finished, puzzle unsolved
+//       2 = puzzle solved
 
 void main(void)
 {
  //make the current sprite invisible
  sp_nodraw(&current_sprite, 1); 
  
- //hide all text boxes
- &save_x = 0;
-hide_tbox:
- &save_x = get_next_sprite_with_this_brain(0, 0, &save_x);
- if (&save_x > 0)
- {
-  &save_y = sp_pseq(&save_x, -1);
-  if (&save_y == 35)
-  {
-   sp_nodraw(&save_x, 1);
-  }
-  
-  &save_x += 1;
-  goto hide_tbox;
- }
- 
  int &numfive;
+ int &tbox;
+ int &counter;
  
- //create transport
+ &save_x = editor_seq(
+ if (&save_x <= 0)
+ {
+  //create transport
   int &elev = create_sprite(383, -100, 0, 855, 1);
   sp_pseq(&elev, 855);
   sp_pframe(&elev, 1);
@@ -174,30 +167,95 @@ hide_tbox:
   wait(300);
   sp_active(&spch, 0);
 
-  //un-hide all text boxes
   playsound(71, 22050, 0, 0, 0);
-  &save_x = 0;
- unhide_tbox:
-  &save_x = get_next_sprite_with_this_brain(0, 0, &save_x);
-  if (&save_x > 0)
-  {
-   &save_y = sp_pseq(&save_x, -1);
-   if (&save_y == 35)
-   {
-    sp_nodraw(&save_x, 0);
-   }
-   
-   &save_x += 1;
-   goto unhide_tbox;
-  }
+ }
+ else
+ {
+  //create the number 5 in position
+  &numfive = create_sprite(383, 366, 0, 853, 5);
+  sp_pseq(&numfive, 853);
+  sp_pframe(&numfive, 5);  
+ }
 
   sp_nodraw(1, 0);
+  
+  //stat bar
   &save_x = create_sprite(308, 410, 0, 98, 3);
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
   sp_pseq(&save_x, 98);
   sp_pframe(&save_x, 4);
   
-  &save_x = create_sprite(
+  //mouse mode
   set_mode(1);
- }
+  
+  //draw the text boxes
+  //order: rof, ffd, fcc, ntf.
+   &save_x = 181;
+   &save_y = 62;
+   &counter = 0;
+  create_tboxes:
+   &tbox = create_sprite(&save_x, &save_y, 0, 35, 2);
+   sp_pseq(&tbox, 35);
+   sp_pframe(&tbox, 2);
+   sp_custom("textbox", &tbox, 1);
+   &counter += 1;
+   if (&counter < 51)
+   { 
+    //next box increment
+    &save_x += 24;
+
+    //word spaces
+    if (&counter == 4)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 6)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 14)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 20)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 32)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 36)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 45)
+    {
+     &save_x += 20;
+    }
+    if (&counter == 47)
+    {
+     &save_x += 20;
+    }    
+    
+    //next line of text boxes
+    if (&counter == 10)
+    {
+     &save_x = 97;
+     &save_y += 85;
+    }
+    if (&counter == 28)
+    {
+     &save_x = 134;
+     &save_y += 85;
+    }
+    if (&counter == 41)
+    {
+     &save_x = 218;
+     &save_y += 85;
+    }
+    
+    goto create_tboxes;
+   }
+}

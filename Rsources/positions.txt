@@ -1,0 +1,8 @@
+text position for small text box
+is text box X-301
+            Y-29
+
+Increment x:
+same word: 24
+Space: 44
+next line: 55
