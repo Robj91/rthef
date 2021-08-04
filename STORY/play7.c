@@ -17,7 +17,7 @@ void main(void)
  int &tbox;
  int &counter;
  
- &save_x = editor_seq(
+ &save_x = editor_seq(1, -1);
  if (&save_x <= 0)
  {
   //create transport
@@ -168,6 +168,8 @@ void main(void)
   sp_active(&spch, 0);
 
   playsound(71, 22050, 0, 0, 0);
+  
+  editor_seq(1, 1);
  }
  else
  {
@@ -183,7 +185,7 @@ void main(void)
   &save_x = create_sprite(308, 410, 0, 98, 4);
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
-  sp_custom("puzzle_pframe", &save_x, 7);
+  sp_custom("puzzle_pframe", &save_x, 1);
   sp_script(&save_x, "stat2");
   
   //mouse mode
@@ -196,9 +198,9 @@ void main(void)
    &counter = 0;
   create_tboxes:
    &tbox = create_sprite(&save_x, &save_y, 0, 35, 2);
-   sp_pseq(&tbox, 35);
-   sp_pframe(&tbox, 2);
+   sp_touch_damage(&tbox, -1);
    sp_custom("textbox", &tbox, 1);
+   sp_script(&tbox, "pz1-tb");
    &counter += 1;
    if (&counter < 51)
    { 
@@ -258,5 +260,6 @@ void main(void)
     
     goto create_tboxes;
    }
-   
+  
+  
 }
