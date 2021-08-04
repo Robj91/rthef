@@ -183,8 +183,7 @@ void main(void)
   &save_x = create_sprite(308, 410, 0, 98, 3);
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
-  sp_pseq(&save_x, 98);
-  sp_pframe(&save_x, 4);
+  sp_script(&save_x, "stat2");
   
   //mouse mode
   set_mode(1);
@@ -258,4 +257,5 @@ void main(void)
     
     goto create_tboxes;
    }
+   
 }

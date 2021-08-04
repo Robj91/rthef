@@ -38,6 +38,8 @@ void main()
 
 //Now we're done... Dink knows to run START.C automatically next....
 
+  initfont("Arial Bold");
+
     debug("Dink started. Time to <Your Dmod Name Goes Here>");
     kill_this_task();
 }
