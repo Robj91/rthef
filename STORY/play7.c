@@ -180,9 +180,10 @@ void main(void)
   sp_nodraw(1, 0);
   
   //stat bar
-  &save_x = create_sprite(308, 410, 0, 98, 3);
+  &save_x = create_sprite(308, 410, 0, 98, 4);
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
+  sp_custom("puzzle_pframe", &save_x, 7);
   sp_script(&save_x, "stat2");
   
   //mouse mode
