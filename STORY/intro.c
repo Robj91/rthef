@@ -82,8 +82,8 @@ void main(void)
    wait(4000);   
 
   //move the text off screen and kill it
-   sp_speed(&txt, 2);
-   move_stop(&txt, 6, 1500, 1);
+   sp_speed(&txt, 3);
+   move_stop(&txt, 6, 800, 1);
    sp_active(&txt, 0);
 
   //create split screen effect

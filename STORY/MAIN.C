@@ -26,14 +26,17 @@ void main()
   make_global_int("&missle_source", 0);
   make_global_int("&enemy_sprite", 0);
   make_global_int("&magic_cost", 0);
-  make_global_int("&save_x", 0);
-  make_global_int("&save_y", 0);
-  make_global_int("&dinklogo", 0);
 
 // Add your own globals here. Remember, you only get about 200 of them
 // total, so be sure you don't go overboard.
   
   make_global_int("&story", 0);
+
+  //juggle vars
+  make_global_int("&save_x", 0);
+  make_global_int("&save_y", 0);
+  make_global_int("&gjug1", 0);
+  make_global_int("&gjug2", 0);
 
 //Now we're done... Dink knows to run START.C automatically next....
 

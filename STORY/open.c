@@ -40,13 +40,6 @@ void main(void)
   }
 
   int &sttext;
-  int &sttext2;
-  int &sttext3;
-  int &sttext4;
-  int &sttext5; 
-  int &sttext6; 
-  int &sttext7; 
-  int &sttext8; 
   wait(2000);
 
  //scrolling text
@@ -57,55 +50,61 @@ void main(void)
   wait(1500);
 
  //scrolling text
-  &sttext3 = say_xy("`%Motivation is lost so easily, but treasured when found..", 30, 480);
-  sp_kill(&sttext3, 0);
-  sp_speed(&sttext3, 2);
-  move(&sttext3, 8, -20, 1);
+  &sttext = say_xy("`%Motivation is lost so easily, but treasured when found..", 0, 480);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move(&sttext, 8, -20, 1);
   wait(1500);
 
  //scrolling text
-  &sttext4 = say_xy("`%Sometimes bad luck strikes, and an adventure is no more...", 0, 500);
-  sp_kill(&sttext4, 0);
-  sp_speed(&sttext4, 2);
-  move(&sttext4, 8, -20, 1);
+  &sttext = say_xy("`%Sometimes bad luck strikes, and an adventure is no more...", 0, 500);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move(&sttext, 8, -20, 1);
   wait(1500);
 
  //scrolling text
-  &sttext5 = say_xy("`%But sometimes, once in a life time, something very unlcuky happens..", 0, 500);
-  sp_kill(&sttext5, 0);
-  sp_speed(&sttext5, 2);
-  move(&sttext5, 8, -20, 1);
+  &sttext = say_xy("`%But sometimes, once in a life time, something very unlucky happens..", 0, 500);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move(&sttext, 8, -20, 1);
   wait(2000);
 
  //scrolling text
-  &sttext6 = say_xy("`%Something odd..", 0, 500);
-  sp_kill(&sttext6, 0);
-  sp_speed(&sttext6, 2);
-  move(&sttext6, 8, -20, 1);
+  &sttext = say_xy("`%Something odd..", 0, 500);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move(&sttext, 8, -20, 1);
   wait(2000);
 
  //scrolling text
-  &sttext7 = say_xy("`%Something strange...", 0, 500);
-  sp_kill(&sttext7, 0);
-  sp_speed(&sttext7, 2);
-  move(&sttext7, 8, -20, 1);
+  &sttext = say_xy("`%Something strange...", 0, 500);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move(&sttext, 8, -20, 1);
   wait(2000);
 
  //scrolling text
-  &sttext8 = say_xy("`%And something even Dink could not possibly expect to happen...", 0, 500);
-  sp_kill(&sttext8, 0);
-  sp_speed(&sttext8, 2);
-  move_stop(&sttext8, 8, -60, 1);
+  &sttext = say_xy("`%And something even Dink could not possibly expect to happen...", 0, 500);
+  sp_kill(&sttext, 0);
+  sp_speed(&sttext, 2);
+  move_stop(&sttext, 8, 225, 1);
+  
+  //move it all off faster once the last line has reached the middle
+  &save_x = 0;
+ text_speedup:
+  &save_x = get_next_sprite_with_this_brain(8, 0, &save_x);
+  if (&save_x > 0)
+  {
+   sp_speed(&save_x, 6);
+   &save_x += 1;
+   goto text_speedup;
+  }
 
- //Kill text sprites
-  sp_active(&sttext, 0);
-  sp_active(&sttext3, 0);
-  sp_active(&sttext4, 0);
-  sp_active(&sttext5, 0);
-  sp_active(&sttext6, 0);
-  sp_active(&sttext7, 0);
-  sp_active(&sttext8, 0);
+ move_stop(&sttext, 8, -60, 1);
 
+ //Kill all text sprites
+ external("dc-f", "kill_texts");
  
  //Change screens
   script_attach(1000);
@@ -124,7 +123,7 @@ void main(void)
   freeze(1);
 
  //create text at bottom of screen
-  say_xy("`%Graphics - ", 20, 350);
+  say_xy("`%Robj and Skurn present..", 20, 350);
   wait(800);
 
  //make dink walk up screen
@@ -148,7 +147,7 @@ void main(void)
   sp_y(1, 490);
 
  //create text at bottom of screen
-  say_xy("`%Sounds and Midis - various places on the internet.", 20, 350);
+  say_xy("`%A new Dink Smallwood adventure..", 20, 350);
   wait(800);
 
  //make dink move up screen
@@ -173,7 +172,7 @@ void main(void)
   sp_x(1, 377);
 
  //create text at bottom of screen
-  say_xy("`%Mapping, scripting and overall design by Robj", 20, 350);
+  say_xy("`%Thanks to the DInk Network, and its many users for inspiration", 20, 350);
   wait(800);
 
  //make dink walk up and across screen
@@ -199,7 +198,7 @@ void main(void)
   sp_y(1, 307);
 
  //create text at bottom of screen
-  say_xy("`%Thanks to the Dink Network, and its many users for inspiration.", 20, 350);
+  say_xy("`%Parts of this dmod inspired by (and particular parts a homage to) '3 in Three'", 20, 350);
   wait(800);
 
  //make dink move halfway across screen
@@ -235,7 +234,7 @@ void main(void)
   sp_y(1, -20);
 
  //create text at bottom of screen
-  say_xy("`%Special Thanks to RTsoft for the creation of Dink Smallwood.", 20, 350);
+  say_xy("`%See credits .txt for credits", 20, 350);
   wait(800);
 
  //make dink move down screens

@@ -85,6 +85,7 @@ void main(void)
 //Playsound(50,36050,0,0,0);
 
 int &crap;
+int &dinklogo;
 
 //fill 255 fills the screen white... I use a full-sized BMP so it covers up
 //The whole screen & doesn't really matter. You could use 0 to fill it with
