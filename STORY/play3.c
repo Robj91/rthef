@@ -216,6 +216,8 @@ void main(void)
   sp_nodraw(&numb2, 1);
   sp_nodraw(&symb, 1);
   sp_pframe(&text, 11);
+  sp_x(&text, 616);
+  sp_y(&text, 306);
   sp_nodraw(&text, 0);
   playsound(73, 44100, 0, 0, 0);
   wait(1000);
@@ -272,16 +274,6 @@ void main(void)
   playsound(73, 30050, 0, 0, 0);
   wait(1000);
   sp_nodraw(&text, 1);  
-
- //speech bubble
-  //sp_x(&spch, 509);
-  //sp_y(&spch, 218);
-  //sp_pframe(&spch, 23);
-  //sp_nodraw(&spch, 0);
-  //Playsound(61,22050,0,0,0);
-  //wait(200);
-  //wait_for_button();
-  //sp_nodraw(&spch, 1);
 
  //make transport flash and beep
   sp_brain(&elev, 6);

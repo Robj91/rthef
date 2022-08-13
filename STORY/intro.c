@@ -4,6 +4,11 @@
 
 void main(void)
 {
+ int &backd;
+ int &txt;
+ int &scn;
+ int &myx;
+
  sp_nohit(&current_sprite, 1);
  if (&player_map == 1)
  {
@@ -21,15 +26,15 @@ void main(void)
    sp_base_walk(1, -1);
 
   //create bottom black backdrop
-   int &backd = create_sprite(406, 389, 0, 99, 5);
+   &backd = create_sprite(406, 389, 0, 99, 5);
    sp_pseq(&backd, 99);
    sp_pframe(&backd, 5);
    sp_que(&backd, -550);
    wait(1000);
-   int &myx = 0;
+   &myx = 0;
 
   //Create the first text
-   int &txt = create_sprite(410, 389, 0, 160, 1);
+   &txt = create_sprite(410, 389, 0, 160, 1);
    sp_size(&txt, 1);
    sp_pseq(&txt, 160);
    sp_pframe(&txt, 1);
@@ -59,15 +64,15 @@ void main(void)
   if (&story == 0)
   {
   //Create bottom black backdrop
-   int &backd = create_sprite(406, 389, 0, 99, 5);
+   &backd = create_sprite(406, 389, 0, 99, 5);
    sp_pseq(&backd, 99);
    sp_pframe(&backd, 5);
    sp_que(&backd, -550);
    wait(1000);
-   int &myx = 0;
+   &myx = 0;
 
   //create first text
-   int &txt = create_sprite(410, 389, 0, 160, 2);
+   &txt = create_sprite(410, 395, 0, 160, 2);
    sp_size(&txt, 1);
    sp_pseq(&txt, 160);
    sp_pframe(&txt, 2);
@@ -79,21 +84,26 @@ void main(void)
    sp_size(&txt, &myx);
    &myx = sp_size(&txt, -1);
    if (&myx < 100) goto loop2;
-   wait(4000);   
+   wait(2500);   
 
   //move the text off screen and kill it
    sp_speed(&txt, 3);
-   move_stop(&txt, 6, 800, 1);
+   move_stop(&txt, 6, 1000, 1);
    sp_active(&txt, 0);
 
   //create split screen effect
    sp_x(&current_sprite, 128);
-   int &scn = create_sprite(538, 220, 0, 99, 1);
+   &scn = create_sprite(538, 220, 0, 99, 1);
    sp_pseq(&scn, 99);
    sp_pframe(&scn, 1);
    sp_que(&scn, -500);
    Playsound(20,22050,0,0,0);
    wait(700);
+   
+  //create spacebar to continue text
+  &backd = create_sprite(392, 385, 0, 160, 13);
+  sp_pseq(&backd, 160);
+  sp_pframe(&backd, 13);
    
   //speech 1
    &txt = create_sprite(403, 124, 0, 150, 1);
@@ -102,6 +112,7 @@ void main(void)
    Playsound(61,22050,0,0,0); 
    wait(200);
    wait_for_button();  
+   sp_active(&backd, 0);
 
   //speech 2
    sp_pframe(&txt, 2);

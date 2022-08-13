@@ -85,7 +85,7 @@ void main(void)
 
  //change x and y of text
  //and change it to power surge text
-  sp_x(&spch, 320);
+  sp_x(&spch, 340);
   sp_y(&spch, 372);
   sp_pseq(&spch, 160);
   sp_pframe(&spch, 4);
@@ -212,25 +212,25 @@ loop:
 
   wait(&gau3);
   &gau += 1;
-  if (&gau > 4) 
+  if (&gau > 3) 
   {  
-   if (&gau < 7)
+   if (&gau < 5)
    {
     &gau2 -= 150;
     &gau3 -= 150;
    }
   }
-  if (&gau == 8)
+  if (&gau == 6)
   {
    &gau2 = 100;
    &gau3 = 120;
   }
-  if (&gau == 9)
+  if (&gau == 7)
   {
    &gau2 = 20;
    &gau3 = 20;
   } 
-  if (&gau != 50)
+  if (&gau != 40)
 	goto loop;
  
  //change frame to notepad with single 5

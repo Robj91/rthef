@@ -16,6 +16,8 @@ void main(void)
  int &numfive;
  int &tbox;
  int &counter;
+ int &letter;
+ int &word;
  
  &save_x = editor_seq(1, -1);
  if (&save_x <= 0)
@@ -182,84 +184,103 @@ void main(void)
   sp_nodraw(1, 0);
   
   //stat bar
-  &save_x = create_sprite(308, 410, 0, 98, 4);
+  &save_x = create_sprite(308, 407, 0, 98, 4);
   sp_noclip(&save_x, 1);
   sp_que(&save_x, 1000);
   sp_custom("puzzle_pframe", &save_x, 1);
   sp_script(&save_x, "stat2");
   
   //mouse mode
-  set_mode(1);
+  sp_brain(1, 13);
   
   //draw the text boxes
   //order: rof, ffd, fcc, ntf.
    &save_x = 181;
    &save_y = 62;
-   &counter = 0;
+   &counter = 1;
+   &letter = 1;
+   &word = 1;
   create_tboxes:
    &tbox = create_sprite(&save_x, &save_y, 0, 35, 2);
    sp_touch_damage(&tbox, -1);
    sp_custom("textbox", &tbox, 1);
+   sp_custom("word", &tbox, &word);
+   sp_custom("letter", &tbox, &letter);
    sp_script(&tbox, "pz1-tb");
    &counter += 1;
-   if (&counter < 51)
+   if (&counter < 52)
    { 
+    &gjug1 = &word;
     //next box increment
     &save_x += 24;
 
     //word spaces
     if (&counter == 4)
     {
+     &word = 2;
      &save_x += 20;
     }
     if (&counter == 6)
     {
+     &word = 3;
      &save_x += 20;
     }
     if (&counter == 14)
     {
+     &word = 4;
      &save_x += 20;
     }
     if (&counter == 20)
     {
+     &word = 5;
      &save_x += 20;
     }
     if (&counter == 32)
     {
+     &wrod = 6;
      &save_x += 20;
     }
     if (&counter == 36)
     {
+     &word = 7;
      &save_x += 20;
     }
     if (&counter == 45)
     {
+     &word = 8;
      &save_x += 20;
     }
     if (&counter == 47)
     {
+     &word = 9;
      &save_x += 20;
     }    
     
     //next line of text boxes
     if (&counter == 10)
     {
+     &word = 10;
      &save_x = 97;
      &save_y += 85;
     }
     if (&counter == 28)
     {
+     &word = 11;
      &save_x = 134;
      &save_y += 85;
     }
     if (&counter == 41)
     {
+     &word = 12;
      &save_x = 218;
      &save_y += 85;
     }
     
+    if (&word != &gjug1)
+    {
+     &letter = 1;
+    }
+    
     goto create_tboxes;
    }
-  
-  
 }

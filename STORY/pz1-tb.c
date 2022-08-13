@@ -5,6 +5,9 @@ void main(void)
 
 void click(void)
 {
+ //undo mouse mode and enable keystrokes
+ sp_brain(1, 1);
+ 
  //get any currently selected text box sprite
  &save_x = editor_seq(2, -1);
  

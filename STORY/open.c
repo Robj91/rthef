@@ -9,11 +9,37 @@ void main(void)
   freeze(1);
 
   choice_start();
-  "skip first half of intro"
+  "skip intro"
+  "skip half of intro"
   "don't skip any"
   choice_end();
   
   if (&result == 1)
+  {
+   ////////////////////////
+   //temporary intro skip//
+   ////////////////////////
+    sp_nodraw(1, 1);
+    sp_seq(1, 0);
+    sp_brain(1, 13);
+    sp_pseq(1,10);
+    sp_pframe(1,8);
+    sp_que(1,20000);
+    sp_noclip(1, 1);
+    sp_base_idle(1, -1);
+    sp_base_walk(1, -1);
+    
+    script_attach(1000);
+    &player_map = 163;
+    load_screen(163);
+    draw_screen();
+    //sp_nodraw(1, 0);
+   
+    kill_this_task();
+   ////////////////////////
+   ////////////////////////
+  }
+  if (&result == 2)
   {
   ////////////////////////
   //temporary intro skip//
@@ -172,7 +198,7 @@ void main(void)
   sp_x(1, 377);
 
  //create text at bottom of screen
-  say_xy("`%Thanks to the DInk Network, and its many users for inspiration", 20, 350);
+  say_xy("`%Thanks to the Dink Network, and its many users for inspiration", 20, 350);
   wait(800);
 
  //make dink walk up and across screen
@@ -234,7 +260,7 @@ void main(void)
   sp_y(1, -20);
 
  //create text at bottom of screen
-  say_xy("`%See credits .txt for credits", 20, 350);
+  say_xy("`%See credits.txt for credits", 20, 350);
   wait(800);
 
  //make dink move down screens
