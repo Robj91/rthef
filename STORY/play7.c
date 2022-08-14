@@ -203,9 +203,9 @@ void main(void)
   create_tboxes:
    &tbox = create_sprite(&save_x, &save_y, 0, 35, 2);
    sp_touch_damage(&tbox, -1);
-   sp_custom("textbox", &tbox, 1);
-   sp_custom("word", &tbox, &word);
-   sp_custom("letter", &tbox, &letter);
+   sp_custom("textbox", &tbox, &counter);
+   sp_custom("word_num", &tbox, &word);
+   sp_custom("letter_num", &tbox, &letter);
    sp_script(&tbox, "pz1-tb");
    &counter += 1;
    if (&counter < 52)

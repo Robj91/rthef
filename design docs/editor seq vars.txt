@@ -1,0 +1,10 @@
+//editor seq variable explanation
+
+//screen 163
+//editor_sprite 1
+editor_seq: 
+0 = intro has not played on this screen yet
+1 = intro has played already
+
+//editor_sprite 2
+editor_seq: Stores the active_sprite number of the currently selected text box.

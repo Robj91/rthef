@@ -9,10 +9,10 @@ void main(void)
  int &val2;
 
  //side bars
- &val2 = create_sprite(86, 20, 0, 98, 5);
+ &val2 = create_sprite(13, 287, 0, 98, 5);
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001); 
- &val2 = create_sprite(685, 21, 0, 98, 6);
+ &val2 = create_sprite(633, 287, 0, 98, 6);
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001); 
 
