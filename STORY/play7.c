@@ -16,7 +16,7 @@ void main(void)
  int &numfive;
  int &tbox;
  int &counter;
- int &letter;
+ int &let_num;
  int &word;
  
  &save_x = editor_seq(1, -1);
@@ -170,6 +170,27 @@ void main(void)
   sp_active(&spch, 0);
 
   playsound(71, 22050, 0, 0, 0);
+
+  //ask for keyboard
+  stop_entire_game(1);
+  choice_start();
+  set_title_color 3
+  title_start();
+  Are you using a keyboard?
+  (If you are playing on phone or tablet and do not kave a keyboard, select NO)
+  title_end();
+  "I am using a keyboard"
+  "NO, I do not have a keyboard"
+  choice_end();
+  
+  if (&result == 1)
+  {
+   &keyboard = 1;
+  }
+  else
+  {
+   &keyboard = 0;
+  }
   
   editor_seq(1, 1);
  }
@@ -198,14 +219,14 @@ void main(void)
    &save_x = 181;
    &save_y = 62;
    &counter = 1;
-   &letter = 1;
+   &let_num = 1;
    &word = 1;
   create_tboxes:
    &tbox = create_sprite(&save_x, &save_y, 0, 35, 2);
    sp_touch_damage(&tbox, -1);
    sp_custom("textbox", &tbox, &counter);
    sp_custom("word_num", &tbox, &word);
-   sp_custom("letter_num", &tbox, &letter);
+   sp_custom("letter_num", &tbox, &let_num);
    sp_script(&tbox, "pz1-tb");
    &counter += 1;
    if (&counter < 52)
@@ -278,9 +299,15 @@ void main(void)
     
     if (&word != &gjug1)
     {
-     &letter = 1;
+     &let_num = 1;
     }
     
     goto create_tboxes;
    }
+ 
+ //spawn the script to wait for buttons
+ wait(0);
+ &counter = spawn("buttons");
+ &save_x = editor_seq(3,-1);
+ sp_custom("but-script", &save_x, &counter);
 }

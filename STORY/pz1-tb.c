@@ -5,9 +5,20 @@ void main(void)
 
 void click(void)
 {
+ if (&keyboard == 1)
+ {
+  //exit mouse mode if keyboard is in use
+  &save_x = sp_brain(1, -1);
+  if (&save_x > 1)
+  {
+   set_dink_speed(-1);
+   sp_brain(1, 1);
+   sp_nodraw(1, 1);
+  }
+ }
+
  //get any currently selected text box sprite
  &save_x = editor_seq(2, -1);
- 
  if (&save_x == &current_sprite)
  {
   //don't do anything - player clicked on already selected box

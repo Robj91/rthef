@@ -37,6 +37,13 @@ void main()
   make_global_int("&save_y", 0);
   make_global_int("&gjug1", 0);
   make_global_int("&gjug2", 0);
+  
+  //used to decide if player is using keyboard
+  make_global_int("&keyboard", 0);
+  
+  //puzzle vars for keyboard stuff
+  make_global_int("&letter", 0);
+  make_global_int("&keypressed", 0);
 
 //Now we're done... Dink knows to run START.C automatically next....
 

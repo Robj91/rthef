@@ -1,6 +1,13 @@
 //sscript for on screen keyboard in status area
 //one big button, with inside box checks for the individual keys
 
+//CUSTOM KEYS:
+//but-kb - stores the keyboard icon sprite
+//tiptext - stores the tip text that appears when player clicks stuff wrong
+//textbox - stores the textbox sprite (attached to editor_sprite 2)
+//text_input - stores the typed letters
+//letter - stores the letter number currently typed in a textbox
+
 void main(void)
 {
  int &val1;
@@ -8,14 +15,7 @@ void main(void)
  int &val3;
  int &val4;
  
- int &letter;
- 
- &save_x = sp_custom("disable_num", &current_sprite, -1);
- if (&save_x > 0)
- {
-  //this puzzle doesn't need numbers - cover them up with black
-  
- }
+ int &checklet;
 }
 
 void click(void)
@@ -46,81 +46,38 @@ void click(void)
   kill_this_task();
  }
 
- //let's try to automate the inside_box thingy with the letters, rather than checking each letter manually
-
- &save_x = editor_seq(2, -1);
- if (&save_x <= 0)
- {
-  //no textbox selected
-  say_xy("`%No space selected - click on the box you want to type in!", 10, 0);
-  goto stopex;
- }
-
  //get on-screen keyboard sprite position
  &gjug1 = sp_x(&current_sprite, -1);
  &gjug2 = sp_y(&current_sprite, -1);
 
- //check backspace first
- //define inside box for backspace
- &val1 = &gjug1;
- &val1 += 120;
- 
- //top
- &val2 = &gjug2;
- &val2 -= 3;
- 
- //right
- &val3 = &gjug1;
- &val3 += 153;
- 
- //bottom
- &val4 = &gjug2;
- &val4 += 17; 
-
- //check if the cursor is on the backspace key
+ //get the cursor location
  &save_x = sp_x(1, -1);
  &save_y = sp_y(1, -1);
- &save_x = inside_box(&save_x, &save_y, &val1, &val2, &val3, &val4); 
+
+ //check if they clicked the delete key
+ &val1 = &gjug1;
+ &val1 += 47;
+ &val2 = &gjug2;
+ &val2 += 49;
+ &val3 = &gjug1;
+ &val3 += 94;
+ &val4 = &gjug2;
+ &val4 += 69; 
+ &save_x = inside_box(&save_x, &save_y, &val1, &val2, &val3, &val4);
  if (&save_x > 0)
  {
-  //select the previous text box, and de-select the current oneone.
-  &save_x = editor_seq(2, -1);
-  &save_y = sp_custom("textbox", &save_x, -1);
-  &save_y -= 1;
-  &gjug1 = 0;
- get_prior_box:
-  &gjug1 = get_next_sprite_with_this_brain(0, 0, &gjug1);
-  if (&gjug1 > 0)
-  {
-   &gjug2 = sp_custom("textbox", &gjug1, -1);
-   if (&gjug2 == &save_y)
-   {
-    &gjug2 = is_script_attached(&gjug1);
-    if (&gjug2 > 0)
-    {
-     run_script_by_number(&gjug2, "click");
-     
-     //now kill off the text in the newly selected box
-     &save_x = editor_seq(2, -1);  
-     &save_y = sp_custom("text_input", &save_x, -1);
-     if (&save_y > 0)
-     {
-      sp_active(&save_y, 0);
-      sp_custom("text_input", &save_x, 0);
-     }   
-     goto stopex;
-    }
-   }
-   &gjug1 += 1;
-   goto get_prior_box;
-  }  
+  &keypressed = 46;
   
-  //no previous box found - do nothing
-  goto stopex;
+  //poke the puzzle control script
+  &save_x = editor_seq(3, -1);
+  &save_x = is_script_attached(&save_x);
+  run_script_by_number(&save_x, "keys_extra");
+  goto stopex;  
  }
- 
+
+ //let's try to automate the inside_box thingy with the letters, rather than checking each letter manually
  //start at letter 1 (which is Q - top left letter on keyboard)
- &letter = 1;
+ &checklet = 1;
  
  //define inside box for first letter[Q] (left, top, right, bottom)
  //left
@@ -145,59 +102,20 @@ check_letter:
  &save_x = inside_box(&save_x, &save_y, &val1, &val2, &val3, &val4);
  if (&save_x > 0)
  {
-  //convert &letter to 1=A, 2=B, 3=C, etc.
-  external("keyboard", "convert", &letter);
-  &save_x = &return;
+  //convert &checklet to 1=A, 2=B, 3=C, etc.
+  external("keyboard", "convert", &checklet);
+  &letter = &return;
 
-  //save which letter has been chosen, with the text box
-  sp_custom("letter", &save_y, &save_x);
-  
-  //make the chosen letter at the location
-  &save_y = editor_seq(2, -1);
-  &gjug1 = sp_x(&save_y, -1);
-  &gjug2 = sp_y(&save_y, -1);
-  &gjug1 -= 7;
-  &gjug2 -= 20;
-  external("keyboard", "make_letter", &save_x, &gjug1, &gjug2);
-  &save_x = &return;
-  
-  //save the active sprite of the letter with the text box
-  sp_custom("text_input", &save_y, &save_x);
-  sp_kill(&save_x, 0);
-  
-  //select the next text box and de-select the current one.
-  &save_x = editor_seq(2, -1);
-  &save_y = sp_custom("textbox", &save_x, -1);
-  &save_y += 1;
-  &gjug1 = 0;
- get_next_box:
-  &gjug1 = get_next_sprite_with_this_brain(0, 0, &gjug1);
-  if (&gjug1 > 0)
-  {
-   &gjug2 = sp_custom("textbox", &gjug1, -1);
-   if (&gjug2 == &save_y)
-   {
-    &gjug2 = is_script_attached(&gjug1);
-    if (&gjug2 > 0)
-    {
-     run_script_by_number(&gjug2, "click");
-     goto stopex;
-    }
-   }
-   &gjug1 += 1;
-   goto get_next_box;
-  }
-  
-  //next box wasn't foud - that means this is the last box, just de-select it
-  sp_pframe(&save_x, 2);  
-  editor_seq(2, 0);  
-  
+  //poke the puzzle control script
+  &save_x = editor_seq(3, -1);
+  &save_x = is_script_attached(&save_x);
+  run_script_by_number(&save_x, "keys_letters");
   goto stopex;
  }
  else
  {
   //increment to check next letter
-  if (&letter == 10)
+  if (&checklet == 10)
   {
    &val1 = &gjug1;
    &val1 -= 280;
@@ -205,10 +123,10 @@ check_letter:
    &val3 = &gjug1;
    &val3 -= 247;
    &val4 += 26;
-   &letter += 1;
+   &checklet += 1;
    goto check_letter;
   }
-  if (&letter == 19)
+  if (&checklet == 19)
   {
    &val1 = &gjug1;
    &val1 -= 247;
@@ -216,16 +134,16 @@ check_letter:
    &val3 = &gjug1;
    &val3 -= 214;
    &val4 += 26;
-   &letter += 1;
+   &checklet += 1;
    goto check_letter;
   }
   
-  if (&letter < 26)
+  if (&checklet < 26)
   {
    &val1 += 42;
    &val3 += 42;
    
-   &letter += 1; 
+   &checklet += 1; 
    goto check_letter;
   }
  }

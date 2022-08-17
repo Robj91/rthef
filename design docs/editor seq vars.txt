@@ -1,5 +1,9 @@
 //editor seq variable explanation
 
+ALL PUZZLE SCREENS:
+//editor_sprite 3
+editor_seq: Stores the active_sprite number of the puzzle control sprite
+
 //screen 163
 //editor_sprite 1
 editor_seq: 
@@ -8,3 +12,4 @@ editor_seq:
 
 //editor_sprite 2
 editor_seq: Stores the active_sprite number of the currently selected text box.
+

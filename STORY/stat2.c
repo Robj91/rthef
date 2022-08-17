@@ -16,16 +16,19 @@ void main(void)
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001); 
 
- //create the keyboard button
- &save_x = sp_x(&current_sprite, -1);
- &save_y = sp_y(&current_sprite, -1);
- &save_x -= 297;
- &save_y += 60;
- &val2 = create_sprite(&save_x, &save_y, 0, 37, 1);
- sp_touch_damage(&val2, -1);
- sp_noclip(&val2, 1);
- sp_que(&val2, 1002);
- sp_script(&val2, "but-kb"); 
+ //create the keyboard button if the player isn't using a keyboard
+ if (&keyboard == 0)
+ {
+  &save_x = sp_x(&current_sprite, -1);
+  &save_y = sp_y(&current_sprite, -1);
+  &save_x -= 297;
+  &save_y += 60;
+  &val2 = create_sprite(&save_x, &save_y, 0, 37, 1);
+  sp_touch_damage(&val2, -1);
+  sp_noclip(&val2, 1);
+  sp_que(&val2, 1002);
+  sp_script(&val2, "but-kb"); 
+ }
 
  //create the puzzle title button
  &save_x = sp_x(&current_sprite, -1);
