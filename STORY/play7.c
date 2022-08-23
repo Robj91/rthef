@@ -191,7 +191,21 @@ void main(void)
   {
    &keyboard = 0;
   }
+
+  //set initial Dink Smallwood stats using screen 65 editor_seqs
+  //Dinks map location
+  external("dc-f", "remoteseq", 65, 1, 731);
   
+  //Dinks x location
+  external("dc-f", "remoteseq", 65, 2, 314);
+  
+  //Dinks y location
+  external("dc-f", "remoteseq", 65, 3, 202);  
+  
+  //Dinks direction
+  external("dc-f", "remoteframe", 65, 1, 6);    
+
+  //increment editor_seq on editor_sprite 1, so we know this intro has played already
   editor_seq(1, 1);
  }
  else
@@ -202,7 +216,13 @@ void main(void)
   sp_pframe(&numfive, 5);  
  }
 
-  sp_nodraw(1, 0);
+  //make sure mouse mode will be disabled and dink can't move
+  set_dink_speed(-1);
+  sp_brain(1, 1);
+  dink_can_walk_off_screen();
+  sp_x(1, 1);
+  sp_y(1, 1);
+  sp_nodraw(1, 1);
   
   //stat bar
   &save_x = create_sprite(308, 407, 0, 98, 4);
@@ -210,9 +230,6 @@ void main(void)
   sp_que(&save_x, 1000);
   sp_custom("puzzle_pframe", &save_x, 1);
   sp_script(&save_x, "stat2");
-  
-  //mouse mode
-  sp_brain(1, 13);
   
   //draw the text boxes
   //order: rof, ffd, fcc, ntf.
@@ -258,7 +275,7 @@ void main(void)
     }
     if (&counter == 32)
     {
-     &wrod = 6;
+     &word = 6;
      &save_x += 20;
     }
     if (&counter == 36)
@@ -305,9 +322,79 @@ void main(void)
     goto create_tboxes;
    }
  
+ &save_x = editor_seq(1, -1);
+ if (&save_x == 1)
+ {
+  editor_seq(1, 2);
+  
+  //initiate text box with paper background and black borders
+  external("robj-dctb", "text_box_start", 320, 65, 0, 0, 0, 0, 0, 0);
+  if (&save_x == 0) return;
+    &word = &save_x;
+  
+  //text display
+  say_xy("`%~Controls and Info~", 1, &word);
+
+  if (&keyboard == 1)
+  {
+   say_xy("`%Clicking a text box will select it and activate keyboard mode.", 3, &word);
+   say_xy("`%In keyboard mode you can type, and select other text boxes using the arrows", 3, &word);
+   
+   if (&vcheck >= 111)
+    say_xy("`%Pressing the 'DELETE' key will toggle delete mode.", 4, &word);
+   else
+    say_xy("`%Pressing the 'Backspace' key will toggle delete mode.", 4, &word); 
+    
+   say_xy("`%When delete is turned on, arrow keys will also delete text.", 5, &word);
+   say_xy("`%Delete mode is optional though. You can also just type over", 6, &word);
+   say_xy("`%the top of old text and it will be replaced.", 7, &word);
+   say_xy("`%To exit keyboard mode and bring back the mouse, press the `ESC` key.", 8, &word);
+
+   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 10, &word); 
+  }
+  else
+  {
+   say_xy("`%Click a text box to select it and activate keyboard mode.", 3, &word);
+   say_xy("`%In keyboard mode you can type, using the on-screen keyboard.", 3, &word);
+   say_xy("`%Click the keyboard icon in the bottom left to toggle the on-screen keyboard", 4, &word);
+   say_xy("`%While in keyboard mode, use the arrow keys to select other text boxes", 5, &word);
+  
+   say_xy("`%Clicking the 'Delete' key on the on-screen keyboard will toggle delete mode.", 6, &word);  
+    
+   say_xy("`%When delete is turned on, arrow keys will also delete text.", 7, &word);
+   say_xy("`%Delete mode is optional though. You can also just type over", 8, &word);
+   say_xy("`%the top of old text and it will be replaced.", 9, &word);
+   say_xy("`%If you want to de-select a text box you can press the `ESC` key.", 10, &word);
+ 
+    say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 12, &word); 
+  }
+   
+   //arrange text, wait for space, and clear the text
+   external("robj-dctb", "text_box_arrange", &word, 0, 635, 1, 0, 0, 0, 1); 
+   
+   //change the position of the text box
+   external("robj-dctb", "text_box_xy", &word, 320, 120);
+   
+   say_xy("`%Don't worry about remembering everything - reminders will display on screen", 1, &word);
+   say_xy("`%Also, you can click 'Help/Info' for information on various things.", 2, &word);
+   say_xy("`%Also clicking other stuff will help you figure out what to do - try everything.", 3, &word);
+   say_xy("`%Good luck!", 5, &word);
+   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 6, &word);    
+  
+  //arrange text, wait for space, and clear the text
+  external("robj-dctb", "text_box_arrange", &word, 0, 635, 1, 0, 0, 0, 2);  
+ }
+
  //spawn the script to wait for buttons
  wait(0);
  &counter = spawn("buttons");
- &save_x = editor_seq(3,-1);
+ &save_x = editor_seq(3, -1);
  sp_custom("but-script", &save_x, &counter);
+
+ //mouse mode
+ sp_brain(1, 13);
+ sp_nodraw(1, 0);
+ 
+ //set puzzle active
+ editor_frame(3, 1);
 }

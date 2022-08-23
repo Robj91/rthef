@@ -44,10 +44,13 @@ void main()
   //puzzle vars for keyboard stuff
   make_global_int("&letter", 0);
   make_global_int("&keypressed", 0);
+  
+  //version checker
+  make_global_int("&vcheck", 0);
 
 //Now we're done... Dink knows to run START.C automatically next....
 
-  initfont("Arial Bold");
+  spawn("loaded");
 
     debug("Dink started. Time to <Your Dmod Name Goes Here>");
     kill_this_task();

@@ -4,8 +4,27 @@ void main(void)
 {
 loop:
  wait_for_button();
- &keypressed = &result;
  
+ &save_x = editor_frame(3, -1);
+ if (&save_x <= 0)
+ {
+  wait(0);
+  goto loop;
+ }
+ 
+ &keypressed = &result;
+
+ if (&result == 1)
+ {
+  &save_x = get_client_version();
+  if (&save_x >= 199)
+  {
+   //tell key-190 CTRL is being pressed not DEL (they use the same keycode in DinkHD so we have to differentiate)
+   sp_custom("cancel-del", 1, 1);
+   wait(0);
+   sp_custom("cancel-del", 1, 0);
+  }
+ }
  if (&result == 5)
  {
   //ESCAPE key
@@ -37,10 +56,6 @@ loop:
  if (&result == 12)
  {
   //DOWN ARROW
-  //poke the puzzle control script
-  &save_x = editor_seq(3, -1);
-  &save_x = is_script_attached(&save_x);
-  run_script_by_number(&save_x, "keys_extra");
  }
  if (&result == 14)
  {
@@ -61,12 +76,13 @@ loop:
  if (&result == 18)
  {
   //UP ARROW
-  //poke the puzzle control script
-  &save_x = editor_seq(3, -1);
-  &save_x = is_script_attached(&save_x);
-  run_script_by_number(&save_x, "keys_extra");
  }
  
  &keypressed = 0;
  goto loop;
+}
+
+void pause(void)
+{
+ return;
 }

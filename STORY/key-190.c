@@ -5,6 +5,16 @@ void main(void)
  &save_x = get_client_version();
  if (&save_x >= 199)
  {
+  //give a chance for wait_for_button to tell us ctrl is being pressed instead of delete
+    //CTRL and DEL use the same keycode.. what the hell.
+  wait(0);
+  
+  &save_x = sp_custom("cancel-del", 1, -1);
+  if (&save_x == 1)
+  {
+   sp_custom("cancel-del", 1, 0);
+   kill_this_task();
+  }
   &keypressed = 46;
   
   //poke the puzzle control script

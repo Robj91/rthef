@@ -37,6 +37,7 @@ void main(void)
  &save_y += 34;
  &val1 = sp_custom("puzzle_pframe", &current_sprite, -1);
  &val2 = create_sprite(&save_x, &save_y, 0, 36, &val1);
+ sp_touch_damage(&val2, -1);
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001);
  sp_script(&val2, "but-pz");
@@ -47,15 +48,17 @@ void main(void)
  &save_x += 243;
  &save_y += 42;
  &val2 = create_sprite(&save_x, &save_y, 0, 38, 1);
+ sp_touch_damage(&val2, -1);
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001);
- sp_script(&val2, "but-hi");
+ sp_script(&val2, "but-sa");
  
  //create the help/info button
  &save_x = sp_x(&current_sprite, -1);
  &save_x += 44;
  &val2 = create_sprite(&save_x, &save_y, 0, 38, 2);
+ sp_touch_damage(&val2, -1);
  sp_noclip(&val2, 1);
  sp_que(&val2, 1001);
- sp_script(&val2, "but-sa");
+ sp_script(&val2, "but-hi");
 }

@@ -22,21 +22,28 @@ void main(void)
 
 void keys_letters(void)
 {
+ &save_x = editor_frame(3, -1);
+ if (&save_x <= 0)
+ {
+  goto stopex;
+ } 
+
  //make the chosen letter at the location
  //first check if no box selected
  &save_x = editor_seq(2, -1);
- say("&save_x", 1);
  if (&save_x <= 0)
  {
   //no textbox selected kill old text if still active and show new text
   &save_x = sp_custom("tip_text", &current_sprite, -1);
-  &save_y = sp_active(&save_x, -1);
+  &save_y = sp_custom("text_active", &save_x, -1);
   if (&save_y > 0)
   {
    sp_active(&save_x, 0);
   }
   say_xy("`%No space selected - click on the box you want to type in!", 10, 0);
-  sp_custom("tip_text", &current_sprite, &return);
+  &save_x = &return;
+  sp_custom("tip_text", &current_sprite, &save_x);
+  sp_custom("text_active", &save_x, 1);
   goto stopex;
  } 
  
@@ -86,6 +93,12 @@ void keys_letters(void)
 
 void keys_extra(void)
 {
+ &save_x = editor_frame(3, -1);
+ if (&save_x <= 0)
+ {
+  goto stopex;
+ } 
+
  //first check if they pressed the backspace key
  if (&keypressed == 14)
  {
@@ -95,13 +108,15 @@ void keys_extra(void)
   {
    //no textbox selected kill old text if still active and show new text
    &save_x = sp_custom("tip_text", &current_sprite, -1);
-   &save_y = sp_active(&save_x, -1);
+   &save_y = sp_custom("text_active", &save_x, -1);
    if (&save_y > 0)
    {
     sp_active(&save_x, 0);
    }
    say_xy("`%No space selected - click a box to select it", 10, 0);
-   sp_custom("tip_text", &current_sprite, &return);
+   &save_x = &return;
+   sp_custom("tip_text", &current_sprite, &save_x);
+   sp_custom("text_active", &save_x, 1);
   } 
   else
   {
@@ -119,7 +134,7 @@ void keys_extra(void)
      if (&save_y > 0)
      {
       sp_active(&save_y, 0);
-      sp_custom("text-input", &save_x, 0);
+      sp_custom("text_input", &save_x, 0);
      }
     }
    }
@@ -133,13 +148,15 @@ void keys_extra(void)
   {
    //no textbox selected kill old text if still active and show new text
    &save_x = sp_custom("tip_text", &current_sprite, -1);
-   &save_y = sp_active(&save_x, -1);
+   &save_y = sp_custom("text_active", &save_x, -1);
    if (&save_y > 0)
    {
     sp_active(&save_x, 0);
    }
    say_xy("`%No space selected - click a box to select it", 10, 0);
-   sp_custom("tip_text", &current_sprite, &return);
+   &save_x = &return;
+   sp_custom("tip_text", &current_sprite, &save_x);
+   sp_custom("text_active", &save_x, 1);
   } 
   else
   {
@@ -157,7 +174,7 @@ void keys_extra(void)
      if (&save_y > 0)
      {
       sp_active(&save_y, 0);
-      sp_custom("text-input", &save_x, 0);
+      sp_custom("text_input", &save_x, 0);
      }
     }
    }
@@ -168,7 +185,7 @@ void keys_extra(void)
   //'delete' key was pressed - toggle deleting when moving text boxes
   //delete old 'tip text' if it's active
   &save_x = sp_custom("tip_text", &current_sprite, -1);
-  &save_y = sp_active(&save_x, -1);
+  &save_y = sp_custom("text_active", &save_x, -1);
   if (&save_y > 0)
   {
    sp_active(&save_x, 0);
@@ -178,14 +195,18 @@ void keys_extra(void)
   &save_x = sp_custom("delete", &current_sprite, -1);
   if (&save_x <= 0)
   {
-   say_xy("`%Delete is now toggle ON. Moving left or right with arrow keys will delete text.", 10, 0);
-   sp_custom("tip_text", &current_sprite, &return);
+   say_xy("`%Delete is now turned ON. Left or Right arrow will delete text.", 10, 0);
+   &save_x = &return;
+   sp_custom("tip_text", &current_sprite, &save_x);
+   sp_custom("text_active", &save_x, 1);
    sp_custom("delete", &current_sprite, 1);
   }
   else
   {
-   say_xy("`%Delete is now toggle OFF. Moving left or right with arrow keys will not delete text.", 10, 0);
-   sp_custom("tip_text", &current_sprite, &return);
+   say_xy("`%Delete is now turned OFF. Left or Right arrow will not delete text.", 10, 0);
+   &save_x = &return;
+   sp_custom("tip_text", &current_sprite, &save_x);
+   sp_custom("text_active", &save_x, 1);
    sp_custom("delete", &current_sprite, 0);
   }
  }

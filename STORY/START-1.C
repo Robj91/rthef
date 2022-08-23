@@ -25,7 +25,6 @@ void click ( void )
 
     //This is where you would change the room Dink starts in!!
     &player_map = 738;
-    //34
 
     //This is where you would change the location Dink is going to show up
     //on this first screen...
