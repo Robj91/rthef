@@ -3,6 +3,7 @@
 void main(void)
 {
  int &val1;
+ int &val2;
 }
 
 void talk(void)
@@ -73,30 +74,48 @@ talk_menu:
   
   //revert the font colour
   set_font_color(12, 255, 255, 2); 
-  set_font_color(2, 131, 181, 74);
+  set_font_color(2, 8, 211, 252);
   goto talk_menu;
  }
  if (&result == 3)
  {
   //set the font colour
-  set_font_color(12, 115, 123, 236);
+  set_font_color(12, 43, 178, 205);
+  set_font_color(9, 104, 101, 210);
  
   say_stop("Ergh what the hell is this?", 1);
   wait(200);
-  say_stop("`@What does it look like?", &current_sprite);
+  say_stop("`9What does it look like?", &current_sprite);
   wait(200);
   say_stop("A severed finger.. is it the extra one your missing?", 1);
   wait(200);
-  say_stop("`@Listen, my stocks dry and I'm desperate, I'll sell anything at this point", &current_sprite);
+  say_stop("`9Listen, my stocks dry and I'm desperate, I'll sell anything at this point", &current_sprite);
   wait(200);
   say_stop("Why would anyone wanna buy your fifth, severed, bloody, finger?", 1);
   wait(200);
-  say_stop("`@Well, you'll notice it's marked with a nice discount so you never know", &current_sprite);
+  if (&vcheck == 111)
+  {
+   &val1 = say_xy("`@finger", 38, 1);
+   &val2 = say_xy("`@discount", -22, 39);
+   sp_kill(&val1, 0);
+   sp_kill(&val2, 0);
+  }
+  else
+  {
+   &val1 = say_xy("`@finger", 41, 1);
+   &val2 = say_xy("`@discount", -20, 39);
+   sp_kill(&val1, 0);
+   sp_kill(&val2, 0);
+  }
+  say_stop("`9Well, this           is marked with a nice               so you never know", &current_sprite);
+  sp_active(&val1, 0);
+  sp_active(&val2, 0);
   wait(200);
   say_stop("right..", 1);
 
   //set the font colour
-  set_font_color(12, 68, 182, 75);
+  set_font_color(12, 255, 255, 2); 
+  set_font_color(9, 148, 198, 255);
   goto talk_menu;
  }
  
