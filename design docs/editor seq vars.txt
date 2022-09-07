@@ -40,15 +40,32 @@ editor_frame 4: 1 = Dink touched top extensive hardness
 editor_frame 5: 1 = Dink touched left extensive hardness
 editor_frame 6: 1 = Dink touched right extensive hardness
 
+editor_frame 7: 
+1 = initial asked freddy who he is
+
+
+//screen 636:
+editor_frame 1: 1 = Bland comment made by Dink
 
 //screen 667:
 editor_frame 2: 1 = Bland comment made by Dink
 
+//screen 699:
+editor_frame 1: 1 = Bland comment made by Dink
+
 //screen 700:
 //editor_frame 1
-1 = First bland comment
-2 = Seconf bland comment
+1 = First bland comment on screen
+2 = Second bland comment
 
+//screen 702:
+editor_frame 1: 1 = Bland comment made by Dink
+
+//screen 731:
+editor_frame 1: 1 = Bland comment made by Dink
+
+//screen 732:
+editor_frame 1: 1 = Bland comment made by Dink
 
 //screen 733:
 editor_frame 1: 1 = Dink touched door before puzzle was solved (he already commented on it)
