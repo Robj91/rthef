@@ -6,6 +6,34 @@
 void main(void)
 {
  int &val1;
+ 
+ //check if a letter should be placed in this box on creation
+ &val1 = sp_custom("textbox", &current_sprite, -1);
+ &val1 /= 3;
+ &val1 += 4;
+ &val1 = editor_seq(&val1, -1);
+ if (&val1 > 0)
+ {
+  wait(0);
+  //there is a value stored in the editor_sprite mapped to this text box for storing the letter value
+  //run the svar_extract to see if a letter sohuld be created
+  external("pz1-sh", "lett_get_edin", &current_sprite);
+  &val1 = &return;
+  
+  //now make the letter
+  &gjug3 = sp_x(&current_sprite, -1);
+  &gjug4 = sp_y(&current_sprite, -1);
+  external("keyboard", "make_letter", &val1, &gjug3, &gjug4);
+  &val1 = &return;
+
+  sp_size(&val1, 65);
+  &gjug3 = sp_x(&val1, -1);
+  sp_x(&val1, &gjug3);  
+
+  //save the active sprite of the letter with the text box
+  sp_custom("text_input", &current_sprite, &val1);
+ }
+ goto stopex;
 }
 
 void click(void)
@@ -39,7 +67,6 @@ void click(void)
  &save_x = editor_seq(2, -1);
  if (&save_x == &current_sprite)
  {
-  say("ok", 1);
   //don't do anything - player clicked on already selected box
   return;
  }
@@ -50,4 +77,10 @@ void click(void)
  //select the new one
  sp_pframe(&current_sprite, 3);
  editor_seq(2, &current_sprite);
+}
+
+void stopex(void)
+{
+ stopex:
+  return;
 }

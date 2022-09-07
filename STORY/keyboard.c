@@ -184,7 +184,15 @@ void convert(void)
 
 void make_letter(void)
 {
- //create a letter using say_xy, based on &arg1, at x=&arg2, y=&arg3, in colour &arg4, or white if no value passed to &arg2
+ //create a letter using sequence 39, frame &arg1, at x=&arg2, y=&arg3
+ int &txtclr;
+ &txtclr = create_sprite(&arg2, &arg3, 0, 39, &arg1);
+ return(&txtclr);
+}
+
+void make_letter_say(void)
+{
+ //create a letter using say_xy, based on &arg1, at x=&arg2, y=&arg3, in colour &arg4, or white if no value passed to &arg4
  //pass 10 to arg2 for bold green(it's usually 0)
  //the 309 x difference for say_xy is factored in here, so pass ACTUAL position for the text to be at
  

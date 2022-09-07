@@ -9,7 +9,7 @@
 
 //CUSTOM KEYS:
 //tiptext - stores the tip text that appears when player clicks stuff wrong
-//textbox - stores the textbox sprite (attached to editor_sprite 2)
+//textbox - stores the textbox number (counts up from 1. Left to right, row by row)
 //text_input - stores the typed letters
 //letter - stores the letter number currently typed in a textbox
 //delete - stores whether delete is toggled on or off
@@ -62,12 +62,17 @@ void keys_letters(void)
  //save &letter with the text box (in a custom key)
  sp_custom("letter", &save_y, &letter);
  
+ //save &letter value in editor_sprite info so we don't lose it on screen change
+ lett_str_edin(&save_y);
+ 
  &gjug1 = sp_x(&save_y, -1);
  &gjug2 = sp_y(&save_y, -1);
- &gjug1 -= 7;
- &gjug2 -= 20;
  external("keyboard", "make_letter", &letter, &gjug1, &gjug2);
  &save_x = &return;
+ 
+ sp_size(&save_x, 65);
+ &gjug1 = sp_x(&save_x, -1);
+ sp_x(&save_x, &gjug1);
  
  //save the active sprite of the letter with the text box
  sp_custom("text_input", &save_y, &save_x);
@@ -89,6 +94,7 @@ void keys_letters(void)
    sp_nodraw(1, 0);
   }   
  }
+ goto stopex;
 }
 
 void keys_extra(void)
@@ -270,6 +276,75 @@ void next_box(void)
   }
  
  return(0);
+}
+
+void lett_str_edin(void)
+{
+ //since we are working of a base range of 27(0-26), we can store 3 letters per editor sprite (max value of editor_seq is 65535)
+ //there are 51 text boxes, so we can store all of the letter info across 17 editor_sprites using their editor_seq (51/3 = 17)
+ //To get the current editor sprite to use we divide the current text box number by 3 and plus 4, so we can start at editor_sprite 4 (1-3 are already in use)
+ 
+ //to get the place to store in the supervar we just get the remainder of the text box number / 3 (If it equals 0 we store in place 3)
+ 
+ //&arg1 = text box number
+ 
+ int &val1;
+ int &val2;
+ int &val3;
+
+ //get text box number and divide it by 3 
+ &val1 = sp_custom("textbox", &arg1, -1);
+ &val1 /= 3;
+ 
+ //add 4 so we can start at editor_sprite 4
+ &val1 += 4;
+ 
+ //now get the place to to store the value in the variable
+ &val2 = sp_custom("textbox", &arg1, -1);
+ &val2 = math_mod(&val2, 3);
+ if (&val2 == 0)
+ {
+  //If there is no remainder, the place is 3.
+  &val2 = 3;
+ }
+ 
+ //store the letter value in the editor_seq of editor_sprite &val1, using a supervar with base value 27, in place &val2.
+ &val3 = editor_seq(&val1, -1);
+ external("dc-f", "svar_store", &val3, &val2, 27, &letter);
+ &val2 = &return;
+ editor_seq(&val1, &val2);
+ return(&val2);
+}
+
+void lett_get_edin(void)
+{
+ //similar to lett_str_edin, but we are extracting the stored value.
+ 
+ int &val1;
+ int &val2;
+ int &val3;
+
+ //get text box number and divide it by 3 
+ &val1 = sp_custom("textbox", &arg1, -1);
+ &val1 /= 3;
+ 
+ //add 4 so we can start at editor_sprite 4
+ &val1 += 4;
+ 
+ //now get the place to to retrieve the value from, in the variable
+ &val2 = sp_custom("textbox", &arg1, -1);
+ &val2 = math_mod(&val2, 3);
+ if (&val2 == 0)
+ {
+  //If there is no remainder, the place is 3.
+  &val2 = 3;
+ }
+ 
+ //retrieve the letter value in the editor_seq of editor_sprite &val1, using a supervar with base value 27, in place &val2.
+ &val3 = editor_seq(&val1, -1);
+ external("dc-f", "svar_extract", &val3, &val2, 27);
+ &val2 = &return;
+ return(&val2);
 }
 
 void stopex(void)

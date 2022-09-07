@@ -1339,21 +1339,21 @@ void svar_extract(void)
   //&arg2: place (1=far right)
   //arg3: base (eg. 10, 100, 1000, etc)
   
-  int &times = &arg2;
-  int &rest = &arg1;
-  int &value;
+  int &svtimes = &arg2;
+  int &svrest = &arg1;
+  int &svvalue;
   
 svar_extractloop:
-  &value = math_mod(&rest, &arg3);
-  &rest /= &arg3;
-  &times -= 1;
+  &svvalue = math_mod(&svrest, &arg3);
+  &svrest /= &arg3;
+  &svtimes -= 1;
   
-  if (&times != 0)
+  if (&svtimes != 0)
   {
     goto svar_extractloop;
   }
   
-  return(&value);
+  return(&svvalue);
 }
 
 void svar_store(void)
@@ -1364,23 +1364,23 @@ void svar_store(void)
   //arg4: new number
   
   external("dc-f", "svar_extract", &arg1, &arg2, &arg3);
-  &save_x = &return;
+  int &svold = &return;
   
-  int &total = &arg1;
-  int &new = &arg4;
-  &new -= &save_x;
-  int &times = &arg2;
+  int &svtotal = &arg1;
+  int &svnew = &arg4;
+  &svnew -= &svold;
+  int &svtimes = &arg2;
   
 svar_storeloop:
-  if (&times != 1)
+  if (&svtimes != 1)
   {
-    &new *= &arg3;
-    &times -= 1;
+    &svnew *= &arg3;
+    &svtimes -= 1;
     goto svar_storeloop;
   }
   
-  &total += &new;
-  return(&total);
+  &svtotal += &svnew;
+  return(&svtotal);
 }
 
 void precise_wait(void)

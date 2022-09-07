@@ -14,7 +14,6 @@ void click(void)
  Playsound(18, 22050, 0,0,0);
 
  help:
-
   choice_start();
   set_title_color 15
   title_start();
@@ -249,7 +248,7 @@ void click(void)
   unfreeze(1);
   goto stopex;
  }
-
+ 
  unfreeze(1);
  goto stopex;
 }
@@ -273,17 +272,14 @@ void puz_tut(void)
    say_xy("`%Clicking a text box will select it and activate keyboard mode.", 3, &word);
    say_xy("`%In keyboard mode you can type, and select other text boxes using the arrows", 3, &word);
    
-   if (&vcheck >= 111)
-    say_xy("`%Pressing the 'DELETE' key will toggle delete mode.", 4, &word);
-   else
-    say_xy("`%Pressing the 'Backspace' key will toggle delete mode.", 4, &word); 
+   say_xy("`%Pressing the 'DELETE' key on the NUMPAD will toggle delete mode.", 4, &word); 
     
    say_xy("`%When delete is turned on, arrow keys will also delete text.", 5, &word);
    say_xy("`%Delete mode is optional though. You can also just type over", 6, &word);
    say_xy("`%the top of old text and it will be replaced.", 7, &word);
    say_xy("`%To exit keyboard mode and bring back the mouse, press the `ESC` key.", 8, &word);
 
-   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 10, &word); 
+   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 10, &word);
   }
   else
   {

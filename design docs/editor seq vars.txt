@@ -25,3 +25,9 @@ editor_seq:
 //editor_sprite 2
 editor_seq: Stores the active_sprite number of the currently selected text box.
 
+//editor_sprite 3
+editor_seq: Stores the active_sprite number of the puzzle screen control sprite
+
+//editor_sprite 4-21
+editor_seq: Stores the letter value of 3 textboxes as a supervar.
+

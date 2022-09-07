@@ -1,13 +1,5 @@
 //script for screen 163
 
-//i'm not retrieving editor numbers from sprites - just picking which ones to store stuff
-//Sprite doesn't matter, we won't have anything on puzzle screens that rely on editor information
-
-//editor sprite number variables for this screen:
-//#1 - <=0 = intro has not finished playing
-//       1 = intro has finished, puzzle unsolved
-//       2 = puzzle solved
-
 void main(void)
 {
  //make the current sprite invisible
@@ -340,10 +332,7 @@ void main(void)
    say_xy("`%Clicking a text box will select it and activate keyboard mode.", 3, &word);
    say_xy("`%In keyboard mode you can type, and select other text boxes using the arrows", 3, &word);
    
-   if (&vcheck >= 111)
-    say_xy("`%Pressing the 'DELETE' key will toggle delete mode.", 4, &word);
-   else
-    say_xy("`%Pressing the 'Backspace' key will toggle delete mode.", 4, &word); 
+   say_xy("`%Pressing the 'DELETE' key on the NUMPAD will toggle delete mode.", 4, &word); 
     
    say_xy("`%When delete is turned on, arrow keys will also delete text.", 5, &word);
    say_xy("`%Delete mode is optional though. You can also just type over", 6, &word);

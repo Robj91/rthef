@@ -3,3 +3,11 @@
 //14 = LEFT arrow
 //16 = RIGHT arrow
 //18 = UP arrow
+
+
+//&keyboard - Used to decide if the player is using the keyboard
+//0 = keyboard not in use
+//1 = keyboard in use
+
+
+//&letter - stored the numerical value of the letter pressed on the keyboard (1-26)
