@@ -1,8 +1,10 @@
 void main(void)
 {
+ sp_hard(&current_sprite, 0);
  sp_nodraw(&current_sprite, 1);
  sp_nohit(&current_sprite, 1);
  sp_touch_damage(&current_sprite, -1);
+ draw_hard_map();
 }
 
 void touch(void)

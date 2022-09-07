@@ -41,9 +41,18 @@ editor_frame 5: 1 = Dink touched left extensive hardness
 editor_frame 6: 1 = Dink touched right extensive hardness
 
 
+//screen 667:
+editor_frame 2: 1 = Bland comment made by Dink
+
+//screen 700:
+//editor_frame 1
+1 = First bland comment
+2 = Seconf bland comment
+
 
 //screen 733:
 editor_frame 1: 1 = Dink touched door before puzzle was solved (he already commented on it)
+editor_frame 2: 1 = Bland comment made by Dink
 
 
 

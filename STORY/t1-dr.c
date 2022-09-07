@@ -1,5 +1,7 @@
 void main(void)
 {
+ editor_type(1, 0);
+
  &save_x = editor_frame(1, -1);
  if (&save_x == 0)
  {
