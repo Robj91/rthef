@@ -1,6 +1,6 @@
 //editor seq variable explanation
 
-//ALL PUZZLE SCREENS//
+//All puzzle screens:
 //editor_sprite 3
 editor_seq: Stores the active_sprite number of the puzzle control sprite
 editor_frame: Stores whetehr puzzle is currently active(controll-able) or not
@@ -30,4 +30,23 @@ editor_seq: Stores the active_sprite number of the puzzle screen control sprite
 
 //editor_sprite 4-21
 editor_seq: Stores the letter value of 3 textboxes as a supervar.
+
+
+//screen 602:
+editor_frame 1: 1 = Dink touch left side sprite which triggers wall comment
+editor_frame 2: 1 = Dink touch right side sprite which triggers wall comment
+editor_frame 3: 1 = Dink touched left side odd hardness
+editor_frame 4: 1 = Dink touched top extensive hardness
+editor_frame 5: 1 = Dink touched left extensive hardness
+editor_frame 6: 1 = Dink touched right extensive hardness
+
+
+
+//screen 733:
+editor_frame 1: 1 = Dink touched door before puzzle was solved (he already commented on it)
+
+
+
+
+
 
