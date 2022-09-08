@@ -12,7 +12,19 @@ void talk(void)
  
  &val1 = say("`7Nothing was like this, it's a sign, a sign of the apocalyspe and the            the Seth.", &current_sprite);
  &save_x = sp_x(&val1, -1);
+ if (&save_x < 1)
+ {
+  &save_x = 1;
+ }
+ if (&save_x > 470)
+ {
+  &save_x = 470;
+ }
  &save_y = sp_y(&val1, -1);
+ if (&save_y < 1)
+ {
+  &save_y = 1;
+ }
  sp_active(&val3, 0);
  if (&vcheck == 111)
  {

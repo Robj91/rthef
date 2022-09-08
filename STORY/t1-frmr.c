@@ -24,7 +24,19 @@ void talk(void)
  
  &val3 = say("`4I water all         of my pumpkins everyday, they are a very delicate breed,     it's an eight hour       ", &current_sprite);
  &save_x = sp_x(&val3, -1);
+ if (&save_x < 1)
+ {
+  &save_x = 1;
+ }
+ if (&save_x > 470)
+ {
+  &save_x = 470;
+ }
  &save_y = sp_y(&val3, -1);
+ if (&save_y < 1)
+ {
+  &save_y = 1;
+ }
  sp_active(&val3, 0);
  if (&vcheck == 111)
  {
