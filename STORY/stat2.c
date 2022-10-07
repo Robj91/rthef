@@ -1,6 +1,6 @@
 //the puzzle status bar script
 
-//puzzle title buttons is suence 36
+//puzzle title buttons is sequence 36
 //the pframe of the puzzle title is passed in sp_custom key "puzzle_pframe"
 
 void main(void)

@@ -10,12 +10,13 @@ void main(void)
  int &counter;
  int &let_num;
  int &word;
+ int &elev;
  
  &save_x = editor_seq(1, -1);
  if (&save_x <= 0)
  {
   //create transport
-  int &elev = create_sprite(383, -100, 0, 855, 1);
+  &elev = create_sprite(383, -100, 0, 855, 1);
   sp_pseq(&elev, 855);
   sp_pframe(&elev, 1);
   sp_speed(&elev, 10);
@@ -206,6 +207,15 @@ void main(void)
   &numfive = create_sprite(383, 366, 0, 853, 5);
   sp_pseq(&numfive, 853);
   sp_pframe(&numfive, 5);  
+
+  //create transport in position
+  &elev = create_sprite(80, 355, 0, 852, 1);
+  sp_pseq(&elev, 852);
+  sp_pframe(&elev, 1);
+  sp_speed(&elev, 10);
+  sp_timing(&elev, 0);
+  sp_brain(&elev, 0);
+  sp_sound(&elev, 0);
  }
 
   //make sure mouse mode will be disabled and dink can't move
@@ -245,61 +255,61 @@ void main(void)
     &save_x += 24;
 
     //word spaces
-    if (&counter == 4)
+    if (&counter == 5)
     {
      &word = 2;
      &save_x += 20;
     }
-    if (&counter == 6)
+    if (&counter == 7)
     {
      &word = 3;
      &save_x += 20;
     }
-    if (&counter == 14)
+    if (&counter == 15)
     {
      &word = 4;
      &save_x += 20;
     }
-    if (&counter == 20)
+    if (&counter == 21)
     {
      &word = 5;
      &save_x += 20;
     }
-    if (&counter == 32)
+    if (&counter == 33)
     {
      &word = 6;
      &save_x += 20;
     }
-    if (&counter == 36)
+    if (&counter == 37)
     {
      &word = 7;
      &save_x += 20;
     }
-    if (&counter == 45)
+    if (&counter == 46)
     {
      &word = 8;
      &save_x += 20;
     }
-    if (&counter == 47)
+    if (&counter == 48)
     {
      &word = 9;
      &save_x += 20;
     }    
     
     //next line of text boxes
-    if (&counter == 10)
+    if (&counter == 11)
     {
      &word = 10;
      &save_x = 97;
      &save_y += 85;
     }
-    if (&counter == 28)
+    if (&counter == 29)
     {
      &word = 11;
      &save_x = 134;
      &save_y += 85;
     }
-    if (&counter == 41)
+    if (&counter == 42)
     {
      &word = 12;
      &save_x = 218;
@@ -383,6 +393,12 @@ void main(void)
  //mouse mode
  sp_brain(1, 13);
  sp_nodraw(1, 0);
+ sp_noclip(1, 1);
+ sp_que(1, 20000);
+ 
+ //make the numfive a button
+ sp_touch_damage(&numfive, -1);
+ sp_script(&numfive, "numfive");
  
  //set puzzle active
  editor_frame(3, 1);
