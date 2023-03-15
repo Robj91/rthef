@@ -339,33 +339,28 @@ void main(void)
 
   if (&keyboard == 1)
   {
-   say_xy("`%Clicking a text box will select it and activate keyboard mode.", 3, &word);
-   say_xy("`%In keyboard mode you can type, and select other text boxes using the arrows", 3, &word);
+   say_xy("`%Click a text box to select it.", 3, &word);
+   say_xy("`%Use the arrow keys to go to the next or previous text box", 3, &word);
    
-   say_xy("`%Pressing the 'DELETE' key on the NUMPAD will toggle delete mode.", 4, &word); 
+   say_xy("`%Pressing the 'DELETE' key on the NUMPAD will delete text from a text box", 4, &word); 
     
-   say_xy("`%When delete is turned on, arrow keys will also delete text.", 5, &word);
-   say_xy("`%Delete mode is optional though. You can also just type over", 6, &word);
-   say_xy("`%the top of old text and it will be replaced.", 7, &word);
-   say_xy("`%To exit keyboard mode and bring back the mouse, press the `ESC` key.", 8, &word);
+   say_xy("`%OR, you can also just type over the top of old text to replace it.", 5, &word);
+   say_xy("`%To de-select the text box and bring back the mouse cursor, press the `ESC` key.", 6, &word);
 
-   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 10, &word); 
+   say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 8, &word); 
   }
   else
   {
-   say_xy("`%Click a text box to select it and activate keyboard mode.", 3, &word);
-   say_xy("`%In keyboard mode you can type, using the on-screen keyboard.", 3, &word);
+   say_xy("`%Click a text box to select it.", 3, &word);
+   say_xy("`%You can then type using the on-screen keyboard.", 3, &word);
    say_xy("`%Click the keyboard icon in the bottom left to toggle the on-screen keyboard", 4, &word);
-   say_xy("`%While in keyboard mode, use the arrow keys to select other text boxes", 5, &word);
   
-   say_xy("`%Clicking the 'Delete' key on the on-screen keyboard will toggle delete mode.", 6, &word);  
+   say_xy("`%Clicking the 'Delete' key on the on-screen keyboard will clear a box", 5, &word);  
     
-   say_xy("`%When delete is turned on, arrow keys will also delete text.", 7, &word);
-   say_xy("`%Delete mode is optional though. You can also just type over", 8, &word);
-   say_xy("`%the top of old text and it will be replaced.", 9, &word);
-   say_xy("`%If you want to de-select a text box you can press the `ESC` key.", 10, &word);
+   say_xy("`%OR, you can also just type over the top of old text to replace it.", 6, &word);
+   say_xy("`%If you want to de-select a text box you can press the `ESC` key.", 7, &word);
  
-    say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 12, &word); 
+    say_xy("`3~PRESS SPACEBAR TO CONTINUE~", 9, &word); 
   }
    
    //arrange text, wait for space, and clear the text

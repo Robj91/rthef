@@ -39,6 +39,7 @@ void main()
   make_global_int("&gjug2", 0);
   make_global_int("&gjug3", 0);
   make_global_int("&gjug4", 0);
+  make_global_int("&gjug5", 0);
   
   //used to decide if player is using keyboard
   make_global_int("&keyboard", 0);

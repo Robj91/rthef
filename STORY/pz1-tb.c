@@ -5,33 +5,31 @@
 
 void main(void)
 {
- int &val1;
- 
  //check if a letter should be placed in this box on creation
- &val1 = sp_custom("textbox", &current_sprite, -1);
- &val1 /= 3;
- &val1 += 4;
- &val1 = editor_seq(&val1, -1);
- if (&val1 > 0)
+ &gjug5 = sp_custom("textbox", &current_sprite, -1);
+ &gjug5 /= 3;
+ &gjug5 += 4;
+ &gjug5 = editor_seq(&gjug5, -1);
+ if (&gjug5 > 0)
  {
   wait(0);
   //there is a value stored in the editor_sprite mapped to this text box for storing the letter value
   //run the svar_extract to see if a letter sohuld be created
   external("pz1-sh", "lett_get_edin", &current_sprite);
-  &val1 = &return;
+  &gjug5 = &return;
   
   //now make the letter
   &gjug3 = sp_x(&current_sprite, -1);
   &gjug4 = sp_y(&current_sprite, -1);
-  external("keyboard", "make_letter", &val1, &gjug3, &gjug4);
-  &val1 = &return;
+  external("keyboard", "make_letter", &gjug5, &gjug3, &gjug4);
+  &gjug5 = &return;
 
-  sp_size(&val1, 65);
-  &gjug3 = sp_x(&val1, -1);
-  sp_x(&val1, &gjug3);  
+  sp_size(&gjug5, 65);
+  &gjug3 = sp_x(&gjug5, -1);
+  sp_x(&gjug5, &gjug3);  
 
   //save the active sprite of the letter with the text box
-  sp_custom("text_input", &current_sprite, &val1);
+  sp_custom("text_input", &current_sprite, &gjug5);
  }
  goto stopex;
 }
@@ -51,15 +49,15 @@ void click(void)
    //kill any old text and create new stuff
    &save_x = editor_seq(3, -1);
    &save_y = sp_custom("km_mode_text", &save_x, -1);
-   &val1 = sp_custom("text_active", &save_x, -1);
-   if (&val1 > 0)
+   &gjug5 = sp_custom("text_active", &save_x, -1);
+   if (&gjug5 > 0)
    {
     sp_active(&save_y, 0);  
    }
-   &val1 = say_xy("`%Keyboard mode active. Press `ESC` to go back to mouse mode.", 12, 360);
+   &gjug5 = say_xy("`%Keyboard mode active. Press `ESC` to go back to mouse mode.", 12, 360);
    &save_x = editor_seq(3, -1);
-   sp_custom("km_mode_text", &save_x, &val1);
-   sp_custom("text_active", &val1, 1);
+   sp_custom("km_mode_text", &save_x, &gjug5);
+   sp_custom("text_active", &gjug5, 1);
   }
  }
 

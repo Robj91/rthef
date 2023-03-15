@@ -3,7 +3,7 @@
 //All puzzle screens:
 //editor_sprite 3
 editor_seq: Stores the active_sprite number of the puzzle control sprite
-editor_frame: Stores whetehr puzzle is currently active(controll-able) or not
+editor_frame: Stores whether puzzle is currently active(controll-able) or not
 
 
 //Screen 65 - used to store Dinks stats//
@@ -41,7 +41,7 @@ editor_frame 5: 1 = Dink touched left extensive hardness
 editor_frame 6: 1 = Dink touched right extensive hardness
 
 editor_frame 7: 
-1 = initial asked freddy who he is
+1 = initially asked freddy who he is
 
 
 //screen 636:

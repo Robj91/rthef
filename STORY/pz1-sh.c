@@ -12,7 +12,6 @@
 //textbox - stores the textbox number (counts up from 1. Left to right, row by row)
 //text_input - stores the typed letters
 //letter - stores the letter number currently typed in a textbox
-//delete - stores whether delete is toggled on or off
 
 void main(void)
 {
@@ -83,7 +82,7 @@ void keys_letters(void)
  &save_y = &return;
  if (&save_y == 0)
  {
-  //next box wasn't foud - that means this is the last box, just de-select it
+  //next box wasn't found - that means this is the last box, just de-select it
   sp_pframe(&save_x, 2);  
   editor_seq(2, 0); 
   
@@ -105,7 +104,6 @@ void keys_extra(void)
   goto stopex;
  } 
 
- //first check if they pressed the backspace key
  if (&keypressed == 14)
  {
   //Left arrow was pressed
@@ -128,22 +126,6 @@ void keys_extra(void)
   {
    //select the previous text box, and de-select the current one.
    prior_box();
-   &save_x = &return;
-   
-   //check if delete is active and if so, delete the text
-   if (&save_x > 0)
-   {
-    &save_y = sp_custom("delete", &current_sprite, -1);
-    if (&save_y == 1)
-    {
-     &save_y = sp_custom("text_input", &save_x, -1);
-     if (&save_y > 0)
-     {
-      sp_active(&save_y, 0);
-      sp_custom("text_input", &save_x, 0);
-     }
-    }
-   }
   }
  }
  if (&keypressed == 16)
@@ -168,52 +150,20 @@ void keys_extra(void)
   {
    //select the next text box and de-select the current one.
    next_box();
-   &save_x = &return;
-   
-   //check if delete is active and if so, delete the text
-   if (&save_x > 0)
-   {
-    &save_y = sp_custom("delete", &current_sprite, -1);
-    if (&save_y == 1)
-    {
-     &save_y = sp_custom("text_input", &save_x, -1);
-     if (&save_y > 0)
-     {
-      sp_active(&save_y, 0);
-      sp_custom("text_input", &save_x, 0);
-     }
-    }
-   }
   }
  }
  if (&keypressed == 46)
  {
-  //'delete' key was pressed - toggle deleting when moving text boxes
-  //delete old 'tip text' if it's active
-  &save_x = sp_custom("tip_text", &current_sprite, -1);
-  &save_y = sp_custom("text_active", &save_x, -1);
-  if (&save_y > 0)
+  //'delete' key was pressed
+  &save_x = editor_seq(2, -1);
+  if (&save_x > 0)
   {
-   sp_active(&save_x, 0);
-  }
-
-  //toggle delete
-  &save_x = sp_custom("delete", &current_sprite, -1);
-  if (&save_x <= 0)
-  {
-   say_xy("`%Delete is now turned ON. Left or Right arrow will delete text.", 10, 0);
-   &save_x = &return;
-   sp_custom("tip_text", &current_sprite, &save_x);
-   sp_custom("text_active", &save_x, 1);
-   sp_custom("delete", &current_sprite, 1);
-  }
-  else
-  {
-   say_xy("`%Delete is now turned OFF. Left or Right arrow will not delete text.", 10, 0);
-   &save_x = &return;
-   sp_custom("tip_text", &current_sprite, &save_x);
-   sp_custom("text_active", &save_x, 1);
-   sp_custom("delete", &current_sprite, 0);
+   &save_y = sp_custom("text_input", &save_x, -1);
+   if (&save_y > 0)
+   {
+    sp_active(&save_y, 0);
+    sp_custom("text_input", &save_x, 0);
+   }
   }
  }
  
@@ -280,8 +230,8 @@ void next_box(void)
 
 void lett_str_edin(void)
 {
- //since we are working of a base range of 27(0-26), we can store 3 letters per editor sprite (max value of editor_seq is 65535)
- //there are 51 text boxes, so we can store all of the letter info across 17 editor_sprites using their editor_seq (51/3 = 17)
+ //since we are working off a base range of 27(0-26), we can store 3 letters per editor sprite (max value of editor_seq is 65535)
+ //there are 51 text boxes, so we can store all of the 51 letters info across 17 editor_sprites using their editor_seq (51/3 = 17)
  //To get the current editor sprite to use we divide the current text box number by 3 and plus 4, so we can start at editor_sprite 4 (1-3 are already in use)
  
  //to get the place to store in the supervar we just get the remainder of the text box number / 3 (If it equals 0 we store in place 3)
