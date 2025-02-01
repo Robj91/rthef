@@ -1,0 +1,10 @@
+2025-02-02 00-02-37 Started report...
+Screen 35 had 1 sprite related errors!
+    sprite_num=4, x=414, y=797, seq=850, frame=4, ERROR - SPRITE OUT OF BOUNDS!
+
+
+Screen 669 had 2 sprite related errors!
+    sprite_num=52, x=448, y=481, seq=80, frame=21, ERROR - SPRITE OUT OF BOUNDS!
+    sprite_num=54, x=443, y=481, seq=80, frame=21, ERROR - SPRITE OUT OF BOUNDS!
+
+
