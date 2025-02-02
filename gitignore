@@ -1,3 +1,6 @@
+#ignore python scripts
+*.py
+
 #ignore VSCode metadata
 .vscode/*
 
