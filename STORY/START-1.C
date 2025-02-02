@@ -1,20 +1,19 @@
 //for start button
-
 void main( void )
 {
-    int &crap;
+ int &crap;
 }
 
 void buttonon( void )
 {
-    sp_pframe(&current_sprite, 2);
-    Playsound(20,22050,0,0,0);
+ sp_pframe(&current_sprite, 2);
+ Playsound(20,22050,0,0,0);
 }
 
 void buttonoff( void )
 {
-    sp_pframe(&current_sprite, 1);
-    Playsound(21,22050,0,0,0);
+ sp_pframe(&current_sprite, 1);
+ Playsound(21,22050,0,0,0);
 }
 
 void click ( void )
@@ -65,12 +64,6 @@ void click ( void )
     //Clear the screen black in preparation for the first room of the game.
     fill_screen(0);
 
-    //This turns on the "status bar" for the beginning of the game. If you
-    //want to have an "intro", simply comment out the next two lines, then
-    //do them both after your intro is over...
-    //&update_status = 1;
-    //draw_status();
-    wait(5000);
     //We're done, so let's kill this task & the game will begin!
     kill_this_task();
 }

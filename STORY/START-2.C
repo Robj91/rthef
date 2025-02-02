@@ -2,19 +2,19 @@
 
 void main( void )
 {
-    int &crap;
+ int &crap;
 }
 
 void buttonon( void )
 {
-    sp_pframe(&current_sprite, 2);
-    Playsound(20,22050,0,0,0);
+ sp_pframe(&current_sprite, 2);
+ Playsound(20,22050,0,0,0);
 }
 
 void buttonoff( void )
 {
-    sp_pframe(&current_sprite, 1);
-    Playsound(21,22050,0,0,0);
+ sp_pframe(&current_sprite, 1);
+ Playsound(21,22050,0,0,0);
 }
 
 void load( void )
@@ -40,7 +40,9 @@ if (&result == 11)
 if (game_exist(&result) == 0)
     return;
 
-
+ //part of a fix for a stange bug where screen is draw twice upon load.
+ script_attach(1000);
+ 
     stopmidi();
     stopcd();
      sp_active(1, 1);
@@ -54,7 +56,9 @@ if (game_exist(&result) == 0)
     sp_noclip(1, 0);
     set_keep_mouse(1);
     set_mode(2);
-   //script now can't die when the load is preformed..
+
+ //wait command, second part fix for previously mentioned double draw screen bug
+ wait(0);
 
 init("load_sequence_now graphics\dink\walk\ds-w1- 71 43 38 72 -14 -9 14 9");
 init("load_sequence_now graphics\dink\walk\ds-w2- 72 43 37 69 -13 -9 13 9");

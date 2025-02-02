@@ -28,7 +28,12 @@ void main(void)
  load_sound("HIGH2.WAV", 22);
  load_sound("FIRE.WAV", 23);
  load_sound("SPELL1.WAV", 24);
- load_sound("CAVEENT.WAV", 25);
+ 
+ //sound slot 25 is free - dupliate sound was loaded in here by default 
+   //(duplicate of CAVEENT.WAV, see slot 32 further down)
+ //Feel free to use this slot first if you need to add custom sounds
+ //load_sound("CAVEENT.WAV", 25); 
+ 
  load_sound("SNARL1.WAV", 26);
  load_sound("SNARL2.WAV", 27);
  load_sound("SNARL3.WAV", 28);
@@ -84,22 +89,8 @@ void main(void)
 
 //Playsound(50,36050,0,0,0);
 
-int &crap;
-int &dinklogo;
-
-//fill 255 fills the screen white... I use a full-sized BMP so it covers up
-//The whole screen & doesn't really matter. You could use 0 to fill it with
-//black if you weren't using a full-sized BMP for title-01.bmp.
-
-fill_screen(255);
-
-//Make sure the screen isn't locked now. Kinda fixes a bug where if you die
-//when the screen is locked, the "screenlock" bars remain on the title.
-
+fill_screen(0);
 screenlock(0);
-
-//Get the "sprite #1" (which is actually Dink) set to be a mouse pointer
-
 sp_seq(1, 0);
 sp_brain(1, 13);
 sp_pseq(1,10);
@@ -107,13 +98,11 @@ sp_pframe(1,8);
 sp_que(1,20000);
 sp_noclip(1, 1);
 
-//This is where we create the TITLE SCREEN. This line is ok if you're using
-//a 640 x 480 full-sized bitmap as the title (as I do, usually). If you
-//don't, be sure to change this line to fit.
+int &crap;
 
-&dinklogo = create_sprite(426,344, 0, 453, 1);
-sp_que(&dinklogo, -800);
-sp_noclip(&dinklogo, 1);
+&crap = create_sprite(426,344, 0, 453, 1);
+sp_que(&crap, -800);
+sp_noclip(&crap, 1);
 
 //Create the START button....
 
