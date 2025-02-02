@@ -1,0 +1,28 @@
+#ignore VSCode metadata
+.vscode/*
+
+#ignore JetBrains metadata
+.idea/*
+
+#ignore WDED backups
+.wded_backup/*
+
+# ignore the DMOD .dat files
+[Dd][Ii][Nn][Kk].dat
+[Hh][Aa][Rr][Dd].dat
+[Mm][Aa][Pp].dat
+
+#ignore old WDEP2 metadata files
+[Ll][Ii][Bb][Rr][Aa][Rr][Yy].dat
+
+#ignore DDMOD save files
+[Ss][Aa][Vv][Ee]*.dat
+
+#ignore DINKHD save data
+autosave.dat
+quicksave.dat
+autosavedb.dat
+continue_state.dat
+
+
+
